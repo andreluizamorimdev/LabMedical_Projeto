@@ -1,6 +1,14 @@
+import { useNavigate } from "react-router-dom";
+
 const FormLoginComponent  = () => {
+    const navigate = useNavigate();
+
+    const redirectToHome = () => {
+        navigate("/home");
+    }
+
     return (
-        <form>
+        <form onSubmit={redirectToHome}>
             <legend>Login</legend>
             <div className="input-group">
                 <label htmlFor="email">E-mail</label>
