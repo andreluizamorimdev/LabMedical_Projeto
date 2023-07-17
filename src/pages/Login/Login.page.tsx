@@ -1,7 +1,9 @@
+import FormLoginComponent from "../../components/Form/Login/Login.component";
+
 const LoginPage = () => {
     return (
         <>
-            <p>LoginPage is Render</p>
+            <FormLoginComponent />
         </>
     );
 }
