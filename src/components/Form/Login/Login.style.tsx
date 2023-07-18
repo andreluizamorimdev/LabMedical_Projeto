@@ -5,6 +5,22 @@ export const LoginCard = styled.div`
     height: 80vh;
     display: flex;
     box-shadow: 10px 10px 10px 0px rgba(82, 129, 220, 0.25);
+    
+    @media (max-width: 1410px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f2f2f2;
+        width: 75%;
+    }
+    @media (max-width: 920px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+        box-shadow: none;
+        width: 100%;
+    }
 `
 
 export const ImageBox = styled.div`
@@ -18,6 +34,10 @@ export const ImageBox = styled.div`
     img {
         width: 35rem;
     }
+
+    @media (max-width: 1410px) {
+        display: none;
+    }
 `
 
 export const Form = styled.form`
@@ -29,11 +49,19 @@ export const Form = styled.form`
     background-color: #fff;
     padding: 3rem;
     gap: 1rem;
-    background: #FFF;
+    background: #FFF;  
     
+    @media (max-width: 920px) {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 10px 10px 10px 0px rgba(82, 129, 220, 0.25);
+        width: 100%;
+    }
 `
 
-export const FormHeader = styled.div`
+export const FormHeader = styled.legend`
     width: 100%;
     display: flex;
     align-items: center;
