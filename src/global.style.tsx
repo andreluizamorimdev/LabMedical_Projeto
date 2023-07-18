@@ -6,6 +6,13 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
         outline: none;
-        font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+        font-family: 'Inter', sans-serif;
+    }
+    html, body, #root {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 `
