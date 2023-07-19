@@ -57,7 +57,6 @@ export const Form = styled.form`
         justify-content: center;
         align-items: center;
         box-shadow: 10px 10px 10px 0px rgba(82, 129, 220, 0.25);
-        width: 100%;
     }
 `
 
@@ -85,33 +84,6 @@ export const InputBox = styled.div`
     display: flex;
     flex-direction: column;
     margin-bottom: 2.2rem;
-`
-
-export const Label = styled.label`
-    font-size: .8rem;
-    font-weight: 600;
-    color: #000000c0;
-`
-
-export const Input = styled.input`
-    margin: 0.6rem 0;
-    padding: 0.8rem 1.2rem;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 1px 1px 6px #0000001c;
-    font-size: .8rem;
-
-    &::placeholder{
-        color: #000000be;
-    }
-
-    &:hover {
-        background-color: #eeeeee75;
-    }
-
-    &:focus-visible {
-        outline: 1px solid #6c63ff;
-    }
 `
 
 export const Button = styled.button`

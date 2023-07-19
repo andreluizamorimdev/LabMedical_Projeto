@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import image_login from "../../../assets/images/undraw_medicine_logo.svg";
 import * as Styled from './Login.style';
+import InputComponent from "../../Input/Input.component";
 
 const LoginFormComponent  = () => {
     const navigate = useNavigate();
@@ -22,13 +23,10 @@ const LoginFormComponent  = () => {
                         <Styled.Button type="button">Criar conta</Styled.Button>
                     </div>
                 </Styled.FormHeader>
+                
                 <Styled.InputBox>
-                    <Styled.Label htmlFor="email">E-mail</Styled.Label>
-                    <Styled.Input type="email" id="email" placeholder="Digite seu email" />
-                </Styled.InputBox>
-                <Styled.InputBox>
-                    <Styled.Label htmlFor="password">Senha</Styled.Label>
-                    <Styled.Input id="password" placeholder="Digite sua senha" />
+                    <InputComponent id="email" type="email" placeholder="Digite seu email" label="E-mail" />
+                    <InputComponent id="password" type="password" placeholder="Digite sua senha" label="Senha" />
                 </Styled.InputBox>
 
                 <Styled.Button type="submit">Entrar</Styled.Button>
