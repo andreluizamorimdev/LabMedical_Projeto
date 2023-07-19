@@ -8,41 +8,37 @@ export const InputBox = styled.div`
     gap: 0.5rem;
 `
 
-export const Label = styled.label`
+export const Label = styled.label<{$hasError?: boolean}>`
     font-size: .8rem;
     font-weight: 600;
-    color: #000000c0;
+    color: ${({$hasError}) => $hasError ? '#FF5432' : '#000000c0'};
 `
 
-export const Input = styled.input`
+export const Input = styled.input<{$hasError?: boolean}>`
     width: 100%;
     margin: 0.6rem 0;
     padding: 0.8rem 1.2rem;
-    border: none;
     border-radius: 10px;
     box-shadow: 1px 1px 6px #0000001c;
     font-size: .8rem;
+    border: 1px solid ${({$hasError}) => {return $hasError ? '#FF5432' : '#6c63ff'}};
 
     &::placeholder{
-        color: #00000097;
+        color: ${({$hasError}) => $hasError ? '#FF5432' : '#00000097'};
     }
 
     &:hover {
         background-color: #f2f2f2;
     }
-
-    &:focus-visible {
-        outline: 1px solid #6c63ff;
-    }
 `
 
-export const TextArea = styled.textarea`
+export const TextArea = styled.textarea<{$hasError?: boolean}>`
     display: flex;
     margin: 0.6rem 0;
     padding: 0.8rem 1.2rem 2.6rem;
     align-items: flex-start;
     align-self: stretch;
-    border: none;
+    border: 1px solid ${({$hasError}) => {return $hasError ? '#FF5432' : '#6c63ff'}};
     border-radius: 10px;
     box-shadow: 1px 1px 6px #0000001c;
 
@@ -52,10 +48,6 @@ export const TextArea = styled.textarea`
 
     &:hover {
         background-color: #f2f2f2;
-    }
-
-    &:focus-visible {
-        outline: 1px solid #6c63ff;
     }
 `
 
@@ -64,7 +56,7 @@ export const InputContainer = styled.div`
     width: 100%;
 `
 
-export const Icon = styled.button`
+export const Icon = styled.button<{$hasError?: boolean}>`
     position: absolute;
     top: 1.2rem;
     right: 1.2rem;
@@ -78,5 +70,5 @@ export const Icon = styled.button`
     justify-content: center;
 
     font-size: 1.3rem;
-    color: #6c63ff;
+    color: ${({$hasError}) => {return $hasError ? '#FF5432' : '#6c63ff'}};
 `

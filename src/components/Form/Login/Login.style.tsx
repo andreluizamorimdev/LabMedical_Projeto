@@ -86,20 +86,22 @@ export const InputBox = styled.div`
     margin-bottom: 2.2rem;
 `
 
-export const Button = styled.button`
+export const Button = styled.button<{$active?: boolean}>`
     width: 100%;
     border: none;
     font-weight: 500;
     background-color: #6c63ff;
     padding: 0.62rem;
     border-radius: 5px;
+    opacity: ${({ $active }) => {return $active ? 1 : .5 }};
+
     cursor: pointer;
     
     font-size: .93rem;
     font-weight: 500;
     color: #fff;
-
-    &:hover {
-        background-color: #6b63fff1;
+    
+    &:disabled {
+        cursor: not-allowed;
     }
 `

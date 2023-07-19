@@ -4,7 +4,7 @@ import { MdVisibility, MdVisibilityOff } from 'react-icons/md'
 import { IPropsInput } from '../../interfaces/IPropsInput';
 import * as Styled from './Input.style';
 
-const InputComponent = ({label, type, id, placeholder}: IPropsInput) => {
+const InputComponent = ({label, type, id, placeholder, register, error}: IPropsInput) => {
     const [showPassword, setShowPassword] = useState(false);
 
     const handleShowPassword = () => {
@@ -13,12 +13,12 @@ const InputComponent = ({label, type, id, placeholder}: IPropsInput) => {
 
     return ( 
         <Styled.InputBox>
-            <Styled.Label htmlFor={id}>{label}</Styled.Label>
+            <Styled.Label $hasError={!!error} htmlFor={id}>{label}</Styled.Label>
             { type !== 'textarea' &&
                 <Styled.InputContainer>
-                    <Styled.Input type={ showPassword ? 'text' : type} id={id} placeholder={placeholder} />
+                    <Styled.Input $hasError={!!error} type={ showPassword ? 'text' : type} id={id} placeholder={placeholder} {...register} />
                     { type === 'password' &&
-                    <Styled.Icon type='button' onClick={handleShowPassword} >
+                    <Styled.Icon $hasError={!!error} type='button' onClick={handleShowPassword} >
                         { !showPassword
                             ? <MdVisibility />
                             : <MdVisibilityOff />
@@ -31,7 +31,7 @@ const InputComponent = ({label, type, id, placeholder}: IPropsInput) => {
 
             {
                 type === 'textarea' &&
-                <Styled.TextArea id={id} placeholder={placeholder} />
+                <Styled.TextArea $hasError={!!error} id={id} placeholder={placeholder} />
             }
         </Styled.InputBox>
     );
