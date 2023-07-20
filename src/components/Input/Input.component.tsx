@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { MdVisibility, MdVisibilityOff } from 'react-icons/md'
 
-import { IPropsInput } from '../../interfaces/IPropsInput';
+import { IPropsInput } from './IPropsInput';
 import * as Styled from './Input.style';
 
 const InputComponent = ({label, type, id, placeholder, register, error}: IPropsInput) => {

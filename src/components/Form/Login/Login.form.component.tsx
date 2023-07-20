@@ -4,11 +4,7 @@ import image_login from "../../../assets/images/undraw_medicine_logo.svg";
 import * as Styled from './Login.style';
 import InputComponent from "../../Input/Input.component";
 import { useForm, SubmitHandler } from "react-hook-form";
-
-interface IFormLogin {
-    email: string;
-    password: string;
-}
+import { IFormLogin } from "./IFormLogin";
 
 const LoginFormComponent  = () => {
 
@@ -17,7 +13,7 @@ const LoginFormComponent  = () => {
     const navigate = useNavigate();
 
     const onSubmit: SubmitHandler<IFormLogin> = (data) => {
-
+        
         console.log(data);
     }
 
