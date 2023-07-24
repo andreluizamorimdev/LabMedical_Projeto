@@ -5,16 +5,30 @@ import * as Styled from './Login.style';
 import InputComponent from "../../Input/Input.component";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { IFormLogin } from "./IFormLogin";
+import { UserService } from "../../../services/User.service";
 
 const LoginFormComponent  = () => {
 
-    const { register, handleSubmit, formState: { errors } } = useForm<IFormLogin>();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm<IFormLogin>();
 
     const navigate = useNavigate();
 
     const onSubmit: SubmitHandler<IFormLogin> = (data) => {
+        const { email, password } = data;
+
+        const user = UserService.ShowByEmail(email);
+
+        if(!user) {
+            alert("Usuário não encontrado");
+            reset();
+            return;
+        }
+        password === user.password ? navigate('/home') : alert("Usuário e/ou senha incorretos")
         
-        console.log(data);
+    }
+
+    const handleEsqueciSenha = () => {
+        alert("Recurso de Esqueci minha senha está em desenvolvimento");
     }
 
     return (
@@ -51,6 +65,8 @@ const LoginFormComponent  = () => {
                 </Styled.InputBox>
 
                 <Styled.Button $active={ !errors.email && !errors.password } disabled={ !!errors.email || !!errors.password } type="submit">Entrar</Styled.Button>
+
+                <Styled.EsquiciSenha onClick={handleEsqueciSenha}>Esqueceu sua senha? Clique aqui</Styled.EsquiciSenha>
 
             </Styled.Form>
         </Styled.LoginCard>

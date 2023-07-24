@@ -4,7 +4,7 @@ export const LoginCard = styled.div`
     width: 80%;
     height: 80vh;
     display: flex;
-    box-shadow: 10px 10px 10px 0px rgba(82, 129, 220, 0.25);
+    box-shadow: 10px 10px 10px 0px #6b63ff6c;
     
     @media (max-width: 1410px) {
         display: flex;
@@ -56,7 +56,7 @@ export const Form = styled.form`
         display: flex;
         justify-content: center;
         align-items: center;
-        box-shadow: 10px 10px 10px 0px rgba(82, 129, 220, 0.25);
+        box-shadow: 10px 10px 10px 0px #6b63ff6c;
     }
 `
 
@@ -72,7 +72,7 @@ export const FormHeader = styled.legend`
         display: block;
         width: 5rem;
         height: .3rem;
-        background-color: #6c63ff;
+        background-color: #6b63ff6c;
         margin: 0 auto;
         position: absolute;
         border-radius: 10px;
@@ -104,4 +104,9 @@ export const Button = styled.button<{$active?: boolean}>`
     &:disabled {
         cursor: not-allowed;
     }
+`
+
+export const EsquiciSenha = styled.a`
+    text-decoration: none;
+    cursor: pointer;
 `
