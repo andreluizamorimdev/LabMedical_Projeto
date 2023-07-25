@@ -14,8 +14,14 @@ const Create = (newData: IUser) => {
         ...newData,
         id,
     }
+    const token = Math.random().toString(36);
 
-    const createStorage: Array<IUser> = [...users, data];
+    const userWithToken = {
+        ...data,
+        token,
+    };
+
+    const createStorage: Array<IUser> = [...users, userWithToken];
 
     LocalStorageService.set({key: 'users', data: createStorage});
 }

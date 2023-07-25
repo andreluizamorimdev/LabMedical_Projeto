@@ -6,12 +6,16 @@ import InputComponent from "../../Input/Input.component";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { IFormLogin } from "./IFormLogin";
 import { UserService } from "../../../services/User.service";
+import { useAuth } from "../../../hooks/useAuth";
+import { IUser } from "../../../utils/interfaces/IUser";
 
 const LoginFormComponent  = () => {
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm<IFormLogin>();
 
     const navigate = useNavigate();
+
+    const { setAuthentication } = useAuth();
 
     const onSubmit: SubmitHandler<IFormLogin> = (data) => {
         const { email, password } = data;
@@ -23,8 +27,16 @@ const LoginFormComponent  = () => {
             reset();
             return;
         }
-        password === user.password ? navigate('/home') : alert("Usuário e/ou senha incorretos")
+        password === user.password ? redirectToHome(user) : alert("Usuário e/ou senha incorretos");
         
+    }
+
+    const redirectToHome = (user: IUser) => {
+        setAuthentication({
+            user,
+            isLogged: true,
+        });
+        navigate('/home');
     }
 
     const handleEsqueciSenha = () => {
