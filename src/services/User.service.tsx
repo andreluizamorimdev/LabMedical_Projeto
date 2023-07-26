@@ -11,8 +11,8 @@ const Create = (newData: IUser) => {
     const lastUser = users[users.length - 1];
     const id = (lastUser && lastUser.id ? lastUser.id : 0) + 1;
     const data: IUser= {
-        ...newData,
         id,
+        ...newData,
     }
     const token = Math.random().toString(36);
 

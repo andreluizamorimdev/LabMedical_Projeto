@@ -4,9 +4,14 @@ import InputComponent from "../../Input/Input.component";
 import * as Styted from "./Cadastro.style";
 import { IFormCadastro } from "./IFormCadastro";
 import { useNavigate } from "react-router";
+import { UserService } from "../../../services/User.service";
+import { useAuth } from "../../../hooks/useAuth";
+import { IUser } from "../../../utils/interfaces/IUser";
 
 const CadastroFormComponent = () => {
     
+    const { setAuthentication } = useAuth();
+
     const {
         register,
         handleSubmit,
@@ -18,10 +23,36 @@ const CadastroFormComponent = () => {
     const navigate = useNavigate();
 
     const onSubmit: SubmitHandler<IFormCadastro> = (data) => {
-        /* const { email, password, confirmPassword } = data; */
+        const { email, password, confirmPassword } = data;
+        
+        const newUser: IUser = {
+            email,
+            password
+        }
 
+        const user = UserService.ShowByEmail(email);
+
+        if(user) {
+            alert("Usuário já cadastrado no sistema");
+            reset();
+            return;
+        }
+        if(password === confirmPassword) {
+            UserService.Create(newUser);
+            alert("Usuário cadastrado com sucesso");
+            reset();
+            redirectToHome(newUser);
+        }       
         
 
+    }
+
+    const redirectToHome = (user: IUser) => {
+        setAuthentication({
+            user,
+            isLogged: true,
+        });
+        navigate('/home');
     }
 
     const handleLogin = () => {
