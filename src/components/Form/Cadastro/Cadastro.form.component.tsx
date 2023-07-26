@@ -74,7 +74,7 @@ const CadastroFormComponent = () => {
                     type="email"
                     placeholder="Digite seu email"
                     label="E-mail"
-                    register={{...register('email', {required: true, validate: {matchPath: (v:string) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v)} })}}
+                    register={{...register('email', {required: "O email é obrigatório", validate: {matchPath: (v:string) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v)} })}}
                     error={errors.email}
                 />
                 <InputComponent 
@@ -82,7 +82,7 @@ const CadastroFormComponent = () => {
                     type="password"
                     placeholder="Digite sua senha"
                     label="Senha"
-                    register={{...register('password', {required: true, minLength:8})}}
+                    register={{...register('password', {required: "A senha é obrigatória", minLength: {value: 8, message: "A senha deve ter no mínimo 8 caracteres"}})}}
                     error={errors.password}
                 />
                 <InputComponent 
@@ -90,7 +90,7 @@ const CadastroFormComponent = () => {
                     type="password"
                     placeholder="Confirme sua senha"
                     label="Confirmar Senha"
-                    register={{...register('confirmPassword', {required: true, minLength:8, validate: (value: string) => {
+                    register={{...register('confirmPassword', {required: "Confirmar senha é obrigatório", minLength: {value: 8, message: "A senha deve ter no mínimo 8 caracteres"}, validate: (value: string) => {
                         if(value !== watch('password')) {
                             return "As senhas não coincidem";
                         }

@@ -26,8 +26,10 @@ const InputComponent = ({label, type, id, placeholder, register, error}: IPropsI
                         }
                     </Styled.Icon>
                     }
+                    { error && <Styled.Error>{error.message}</Styled.Error>}
                 </Styled.InputContainer>
             }
+            
 
             {
                 type === 'textarea' &&

@@ -61,7 +61,7 @@ const LoginFormComponent  = () => {
                         type="email" 
                         placeholder="Digite seu email" 
                         label="E-mail" 
-                        register={{...register('email', {required: true, validate: {matchPath: (v:string) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v)} })}}
+                        register={{...register('email', {required: "O email é obrigatório", validate: {matchPath: (v:string) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v)} })}}
                         error={errors.email}
                     />
                     <InputComponent 
@@ -69,7 +69,7 @@ const LoginFormComponent  = () => {
                         type="password" 
                         placeholder="Digite sua senha" 
                         label="Senha" 
-                        register={{...register('password', {required: true, minLength:8})}}
+                        register={{...register('password', {required: "A senha é obrigatória", minLength: {value: 8, message: "A senha deve ter no mínimo 8 caracteres"} })}}
                         error={errors.password}
                     />
                 </Styled.InputBox>

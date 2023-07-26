@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const LoginCard = styled.div`
     width: 80%;
-    height: 80vh;
+    height: 85vh;
     display: flex;
     box-shadow: 10px 10px 10px 0px #6b63ff6c;
     

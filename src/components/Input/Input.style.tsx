@@ -5,7 +5,7 @@ export const InputBox = styled.div`
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
-    gap: 0.5rem;
+    margin-bottom: .8rem;
 `
 
 export const Label = styled.label<{$hasError?: boolean}>`
@@ -71,4 +71,9 @@ export const Icon = styled.button<{$hasError?: boolean}>`
 
     font-size: 1.3rem;
     color: ${({$hasError}) => {return $hasError ? '#FF5432' : '#6c63ff'}};
+`
+
+export const Error = styled.p`
+    font-size: .8rem;
+    color: #FF5432;
 `
