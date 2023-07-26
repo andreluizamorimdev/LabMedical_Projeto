@@ -3,6 +3,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import InputComponent from "../../Input/Input.component";
 import * as Styted from "./Cadastro.style";
 import { IFormCadastro } from "./IFormCadastro";
+import { useNavigate } from "react-router";
 
 const CadastroFormComponent = () => {
     
@@ -14,6 +15,8 @@ const CadastroFormComponent = () => {
         reset
     } = useForm<IFormCadastro>();
 
+    const navigate = useNavigate();
+
     const onSubmit: SubmitHandler<IFormCadastro> = (data) => {
         /* const { email, password, confirmPassword } = data; */
 
@@ -21,12 +24,16 @@ const CadastroFormComponent = () => {
 
     }
 
+    const handleLogin = () => {
+        navigate('/');
+    }
+
     return (
         <Styted.FormCadastro onSubmit={handleSubmit(onSubmit)}>
             <Styted.FormHeader>
                 <h1>Cadastro</h1>
                 <div>
-                    <Styted.Button $active type="button">Entrar</Styted.Button>
+                    <Styted.Button $active type="button" onClick={handleLogin}>Entrar</Styted.Button>
                 </div>
             </Styted.FormHeader>
 

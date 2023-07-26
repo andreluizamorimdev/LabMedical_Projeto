@@ -42,12 +42,16 @@ const LoginFormComponent  = () => {
         alert("Recurso de Esqueci minha senha está em desenvolvimento");
     }
 
+    const handleCadastrar = () => {
+        navigate('/cadastro');
+    }
+
     return (
             <Styled.Form onSubmit={handleSubmit(onSubmit)}>
                 <Styled.FormHeader>
                     <h1>Login</h1>
                     <div>
-                        <Styled.Button $active type="button">Criar conta</Styled.Button>
+                        <Styled.Button $active type="button" onClick={handleCadastrar}>Criar conta</Styled.Button>
                     </div>
                 </Styled.FormHeader>
                 
