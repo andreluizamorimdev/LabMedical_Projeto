@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { useNavigate } from "react-router-dom";
-import image_login from "../../../assets/images/undraw_medicine_logo.svg";
 import * as Styled from './Login.style';
 import InputComponent from "../../Input/Input.component";
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -44,15 +43,10 @@ const LoginFormComponent  = () => {
     }
 
     return (
-        <Styled.LoginCard>
-            
-            <Styled.ImageBox>
-                <img className="image" src={image_login} alt="Dois médicos, um com as mãos no bolso e ao lado de um vaso de plantas, e uma anotando dados numa ficha e um coração no meio dos dois simbolizando o amor a medicina" />
-            </Styled.ImageBox>
             <Styled.Form onSubmit={handleSubmit(onSubmit)}>
                 <Styled.FormHeader>
                     <h1>Login</h1>
-                    <div className="Button-cadastrar">
+                    <div>
                         <Styled.Button $active type="button">Criar conta</Styled.Button>
                     </div>
                 </Styled.FormHeader>
@@ -81,7 +75,6 @@ const LoginFormComponent  = () => {
                 <Styled.EsquiciSenha onClick={handleEsqueciSenha}>Esqueceu sua senha? Clique aqui</Styled.EsquiciSenha>
 
             </Styled.Form>
-        </Styled.LoginCard>
     );
 }
  
