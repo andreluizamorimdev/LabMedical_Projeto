@@ -16,10 +16,10 @@ const LoginFormComponent  = () => {
 
     const { setAuthentication } = useAuth();
 
-    const onSubmit: SubmitHandler<IFormLogin> = (data) => {
+    const onSubmit: SubmitHandler<IFormLogin> = async (data) => {
         const { email, password } = data;
 
-        const user = UserService.ShowByEmail(email);
+        const user = await UserService.ShowByEmail(email);
 
         if(!user) {
             alert("Usuário não encontrado");

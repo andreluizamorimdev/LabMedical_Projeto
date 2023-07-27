@@ -1,0 +1,29 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "adm@labmedical.com",
+      "password": "12345678"
+    },
+    {
+      "id": 2,
+      "email": "usuario@labmedical.com",
+      "password": "222333444"
+    },
+    {
+      "id": 3,
+      "email": "labmedical@gmail.com",
+      "password": "12456abc"
+    },
+    {
+      "id": 4,
+      "email": "andre@labmedical.com",
+      "password": "12345678"
+    },
+    {
+      "email": "andre@teste.com",
+      "password": "12345678",
+      "id": 5
+    }
+  ]
+}

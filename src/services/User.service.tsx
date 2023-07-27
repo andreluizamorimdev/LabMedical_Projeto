@@ -1,43 +1,50 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { IUser } from "../utils/interfaces/IUser";
-import { LocalStorageService } from "./LocalStorage.service"
 
-const Get = () => {
-    return LocalStorageService.get("users");
+const API_URL = `http://localhost:3000`;
+
+const Get = async () => {
+    const response = await fetch(`${API_URL}/users`);
+    const user: IUser = await response.json();
+    return user;
 }
 
-const Create = (newData: IUser) => {
-    const users:Array<IUser> = JSON.parse(Get()!) || [];
-    const lastUser = users[users.length - 1];
-    const id = (lastUser && lastUser.id ? lastUser.id : 0) + 1;
-    const data: IUser= {
-        id,
-        ...newData,
+const Create = async (newData: IUser) => {
+
+    await fetch(`${API_URL}/users`, {
+        method: 'POST',
+        body: JSON.stringify({
+            email: newData.email,
+            password: newData.password,
+        }),
+        headers: {
+            "content-type": "application/json",
+        },
+    })
+    .then(async (data) => {
+        await data.json();
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+}
+
+const Show = async (id: number) => {
+
+    const response = await fetch(`${API_URL}/users/${id}`);
+    const user: IUser = await response.json();
+    return user;
+}
+
+const ShowByEmail = async (email: string) => {
+    let filter = `?`;
+    
+    if(email) {
+        filter += `email=${email}&`;
     }
-    const token = Math.random().toString(36);
-
-    const userWithToken = {
-        ...data,
-        token,
-    };
-
-    const createStorage: Array<IUser> = [...users, userWithToken];
-
-    LocalStorageService.set({key: 'users', data: createStorage});
-}
-
-const Show = (id: number) => {
-    const users:Array<IUser> = JSON.parse(Get()!);
-    const user = users.find(user => user.id === id);
-
-    return user;
-}
-
-const ShowByEmail = (email: string) => {
-    const users:Array<IUser> = JSON.parse(Get()!);
-    const user = users.find(user => user.email === email);
-
-    return user;
+    const response = await fetch(`${API_URL}/users${filter}`);
+    const users: Array<IUser> = await response.json();
+    return users[0];
 }
 
 export const UserService = {

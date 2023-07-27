@@ -1,16 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useEffect } from "react";
 import HomePage from "./pages/Home/Home.page";
 import LoginPage from "./pages/Login/Login.page";
-import { SetUsuarioPadrao } from "./utils/SetUsuarioPadrao";
 import CadastroPage from "./pages/Cadastro/Cadastro.page";
 
 function App() {
-
-  useEffect(() => {
-    SetUsuarioPadrao();
-  }, []);
-  
   return (
     <Router>
       <Routes>

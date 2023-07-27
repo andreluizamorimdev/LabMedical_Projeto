@@ -22,7 +22,7 @@ const CadastroFormComponent = () => {
 
     const navigate = useNavigate();
 
-    const onSubmit: SubmitHandler<IFormCadastro> = (data) => {
+    const onSubmit: SubmitHandler<IFormCadastro> = async (data) => {
         const { email, password, confirmPassword } = data;
         
         const newUser: IUser = {
@@ -30,7 +30,7 @@ const CadastroFormComponent = () => {
             password
         }
 
-        const user = UserService.ShowByEmail(email);
+        const user = await UserService.ShowByEmail(email);
 
         if(user) {
             alert("Usuário já cadastrado no sistema");
@@ -38,7 +38,7 @@ const CadastroFormComponent = () => {
             return;
         }
         if(password === confirmPassword) {
-            UserService.Create(newUser);
+            await UserService.Create(newUser);
             alert("Usuário cadastrado com sucesso");
             reset();
             redirectToHome(newUser);
