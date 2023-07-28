@@ -12,7 +12,20 @@ export const Header = styled.header`
     color: #fff;
 `
 
-export const Profile = styled.div`
+export const TituloPagina = styled.h1`
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-left: .5rem;
+`
+
+export const NomePerfil = styled.h2`
+    font-size: 1rem;
+    font-weight: 400;
+    text-transform: uppercase;
+`
+
+export const Perfil = styled.div`
     display: flex;
     align-items: center;
     gap: .8rem;

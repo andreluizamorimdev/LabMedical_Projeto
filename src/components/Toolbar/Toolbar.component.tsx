@@ -1,18 +1,22 @@
 import { useAuth } from '../../hooks/useAuth';
-import * as Styled from './Toolbar.style';
 import { MdAccountCircle } from 'react-icons/md'
-const ToolbarComponent = () => {
+import * as Styled from './Toolbar.style';
+import { useToolbarContext } from '../../hooks/useToolbarContext';
 
+const ToolbarComponent = () => {
     const { authentication } = useAuth();
-    const userName = authentication.user.email.replace(/@.*$/,"");
+
+    const { titulo } = useToolbarContext();
+
+    const nomeUsuario = authentication.user.email.replace(/@.*$/,"");
     return (
         <Styled.Header>
-            <h1>Toolbar</h1>
+            <Styled.TituloPagina>{ titulo }</Styled.TituloPagina>
 
-            <Styled.Profile>
-                <h5>{userName}</h5>
+            <Styled.Perfil>
+                <Styled.NomePerfil>{nomeUsuario}</Styled.NomePerfil>
                 <MdAccountCircle />
-            </Styled.Profile>
+            </Styled.Perfil>
         </Styled.Header>
     );
 }

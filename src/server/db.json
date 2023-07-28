@@ -2,7 +2,7 @@
   "users": [
     {
       "id": 1,
-      "email": "adm@labmedical.com",
+      "email": "administrador@labmedical.com",
       "password": "12345678"
     },
     {
