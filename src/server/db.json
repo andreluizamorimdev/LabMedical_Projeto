@@ -24,6 +24,11 @@
       "email": "andre@teste.com",
       "password": "12345678",
       "id": 5
+    },
+    {
+      "email": "AndreTeste@email.com",
+      "password": "12345678",
+      "id": 6
     }
   ]
 }

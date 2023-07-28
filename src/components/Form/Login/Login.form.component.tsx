@@ -35,7 +35,7 @@ const LoginFormComponent  = () => {
             user,
             isLogged: true,
         });
-        navigate('/home');
+        navigate('/');
     }
 
     const handleEsqueciSenha = () => {

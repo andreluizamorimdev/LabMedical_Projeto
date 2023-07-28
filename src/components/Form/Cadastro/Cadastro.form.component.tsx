@@ -52,11 +52,11 @@ const CadastroFormComponent = () => {
             user,
             isLogged: true,
         });
-        navigate('/home');
+        navigate('/');
     }
 
     const handleLogin = () => {
-        navigate('/');
+        navigate('/login');
     }
 
     return (

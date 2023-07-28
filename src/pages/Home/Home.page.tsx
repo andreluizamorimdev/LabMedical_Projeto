@@ -14,7 +14,7 @@ const HomePage = () => {
         );
     }
 
-    return authentication.isLogged ? renderHomePage() : <Navigate to="/" />;
+    return authentication.isLogged ? renderHomePage() : <Navigate to="/login" />;
 
 }
  
