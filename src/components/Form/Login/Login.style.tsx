@@ -23,6 +23,7 @@ export const FormHeader = styled.legend`
     width: 100%;
     display: flex;
     align-items: center;
+    position: relative;
     justify-content: space-between;
     margin-bottom: 3rem;
 

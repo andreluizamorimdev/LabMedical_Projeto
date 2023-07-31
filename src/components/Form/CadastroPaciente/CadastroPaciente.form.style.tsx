@@ -21,6 +21,41 @@ export const InputBox = styled(Styled.InputBox) `
     margin-bottom: 0;
 `;
 
+export const SelectBox = styled.div`
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+`;
+
+export const Label = styled.label<{$hasError?: boolean}>`
+    font-size: .8rem;
+    font-weight: 600;
+    color: ${({$hasError}) => $hasError ? '#FF5432' : '#000000c0'};
+`
+export const Select = styled.select<{$hasError?: boolean}>`
+    width: 100%;
+    margin: 0.6rem 0;
+    padding: 0.8rem 1.2rem;
+    border-radius: 10px;
+    box-shadow: 1px 1px 6px #0000001c;
+    font-size: .8rem;
+    border: 1px solid ${({$hasError}) => {return $hasError ? '#FF5432' : '#6c63ff'}};
+
+    &::placeholder{
+        color: ${({$hasError}) => $hasError ? '#FF5432' : '#00000097'};
+    }
+
+    &:hover {
+        background-color: #f2f2f2;
+    }
+`
+
+export const Option = styled.option`
+    font-size: .8rem;
+    font-weight: 600;
+    color: #000000c0;
+`;
+
 export const ButtonBox = styled.div`
     display: flex;
     flex-direction: row;

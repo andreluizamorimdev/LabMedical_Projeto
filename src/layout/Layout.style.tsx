@@ -10,8 +10,8 @@ export const LayoutMain = styled.main`
     display: flex;
     flex: 1 0 0;
     flex-direction: column;
-    height: 100%;
     gap: 1rem;
+    overflow-y: scroll;
 `;
 
 export const LayoutContent = styled.section`
@@ -20,6 +20,7 @@ export const LayoutContent = styled.section`
     align-items: center;
     justify-content: center;
     width: 100%;
+    height: auto;
     background-color: #fff;
-
+    
 `;

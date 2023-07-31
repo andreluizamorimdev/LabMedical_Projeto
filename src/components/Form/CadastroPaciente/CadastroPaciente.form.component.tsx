@@ -15,14 +15,33 @@ const CadastroPacienteFormComponent = () => {
 
             <Styled.InputBox>
                 <InputComponent label='Nome Completo' id='nomeCompleto' type='text' placeholder='Digite seu nome completo'  />
-                
+                <Styled.SelectBox>
+                    <Styled.Label>Gênero</Styled.Label>
+                    <Styled.Select name='genero' id='genero'>
+                        <Styled.Option value="Selecione">Selecione</Styled.Option>
+                        <Styled.Option value="Masculino">Masculino</Styled.Option>
+                        <Styled.Option value="Feminino">Feminino</Styled.Option>
+                        <Styled.Option value="PrefiroNaoInformar">Prefiro não informar</Styled.Option>    
+                    </Styled.Select>
+                </Styled.SelectBox>
                 <InputComponent label='Data de Nascimento' id='dataNascimento' type='date' />
             </Styled.InputBox>
             
             <Styled.InputBox>
                 <InputComponent label='CPF' id='cpf' type='text' placeholder='Digite seu CPF' />
-                
                 <InputComponent label='RG' id='rg' type='text' placeholder='Digite seu RG' />
+                <Styled.SelectBox>
+                    <Styled.Label>Estado Civil</Styled.Label>
+                    <Styled.Select name='estadoCivil' id='estadoCivil'>
+                        <Styled.Option value="Selecione">Selecione</Styled.Option>
+                        <Styled.Option value="Solteiro(a)">Solteiro(a)</Styled.Option>
+                        <Styled.Option value="Casado(a)">Casado(a)</Styled.Option>
+                        <Styled.Option value="Separado(a)">Separado(a)</Styled.Option>
+                        <Styled.Option value="Divorciado(a)">Divorciado(a)</Styled.Option>
+                        <Styled.Option value="Viuvo(a)">Viúvo(a)</Styled.Option>    
+                        <Styled.Option value="Amasiado(a)">Amasiado(a)</Styled.Option>    
+                    </Styled.Select>
+                </Styled.SelectBox>
             </Styled.InputBox>
 
             <Styled.InputBox>
