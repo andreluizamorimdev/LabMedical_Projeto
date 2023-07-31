@@ -1,4 +1,4 @@
-import { IMenu } from "../../components/SideBar/Imenu";
+import { IMenu } from "../../components/SideBar/IMenu";
 
 export const MENUS: Array<IMenu> = [
     {
