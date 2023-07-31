@@ -65,3 +65,11 @@ export const MenuItem = styled(Link)<{$active?: boolean, $open: boolean}>`
     }
     
 `
+
+export const LogoLab = styled.img<{$open?: boolean}>`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    width: ${({$open}) => $open ? '100%' : '0'};
+`;

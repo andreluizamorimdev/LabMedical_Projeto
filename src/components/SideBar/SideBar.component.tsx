@@ -3,7 +3,8 @@ import { useState } from 'react';
 
 import * as Icon from 'react-icons/md'
 
-import { MENUS } from '../../utils/const/menu'; 
+import { MENUS } from '../../utils/const/menu';
+import Logo from '../../assets/images/LABMedicalLogo.png';
 import * as Styled from './SideBar.style';
 
 const SideBarComponent = () => {
@@ -45,6 +46,8 @@ const SideBarComponent = () => {
             </Styled.SideBarButton>
             
             { renderMenuItems() }
+
+            <Styled.LogoLab $open src={ Logo } alt='Logo do app LabMedical fornecida pelo lab365 para uso como asset, nela apresenta-se um monitor de batimentos cardiacos, acima do nome LABMedical' />
 
         </Styled.SideBar>
     );
