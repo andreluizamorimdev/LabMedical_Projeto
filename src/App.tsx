@@ -4,6 +4,10 @@ import LoginPage from "./pages/Login/Login.page";
 import CadastroPage from "./pages/Cadastro/Cadastro.page";
 import Layout from "./layout/Layout.component";
 import { ToolbarTituloProvider } from "./contexts/ToolbarTitulo/ToolbarTitulo.context";
+import CadastroPacientePage from "./pages/CadastroPaciente/CadastroPaciente.page";
+import ListaProntuarioPage from "./pages/ListaProntuario/ListaProntuario.page";
+import CadastroConsultaPage from "./pages/CadastroConsulta/CadastroConsulta.page";
+import CadastroExamePage from "./pages/CadastroExame/CadastroExame.page";
 
 function App() {
   return (
@@ -14,6 +18,10 @@ function App() {
           <Route path="/cadastro" element={<CadastroPage />} />
           <Route path="/" element={<Layout />} >
             <Route path="/" element={<HomePage />} />
+            <Route path="/paciente" element={<CadastroPacientePage />} />
+            <Route path="/prontuarios" element={<ListaProntuarioPage />} />
+            <Route path="/consulta" element={<CadastroConsultaPage />} />
+            <Route path="/exame" element={<CadastroExamePage />} />
           </Route>
           <Route path="*" element={<h1>Página não encontrada</h1>} />
         </Routes>

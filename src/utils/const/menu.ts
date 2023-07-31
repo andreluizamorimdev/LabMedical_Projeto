@@ -16,7 +16,7 @@ export const MENUS: Array<IMenu> = [
     {
         id: 3,
         titulo: "Cadastrar Pacientes",
-        path: "/pacientes",
+        path: "/paciente",
         icone: "MdPersonAdd"
     },
     {
