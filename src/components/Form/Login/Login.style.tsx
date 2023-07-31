@@ -9,7 +9,6 @@ export const Form = styled.form`
     background-color: #fff;
     padding: 3rem;
     gap: 1rem;
-    background: #FFF;  
     
     @media (max-width: 920px) {
         width: 100%;

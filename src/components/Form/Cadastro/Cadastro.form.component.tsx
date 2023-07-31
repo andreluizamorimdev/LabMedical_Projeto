@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { SubmitHandler, useForm } from "react-hook-form";
 import InputComponent from "../../Input/Input.component";
-import * as Styted from "./Cadastro.style";
+import * as Styled from "./Cadastro.style";
 import { IFormCadastro } from "./IFormCadastro";
 import { useNavigate } from "react-router";
 import { UserService } from "../../../services/User.service";
@@ -60,15 +60,15 @@ const CadastroFormComponent = () => {
     }
 
     return (
-        <Styted.FormCadastro onSubmit={handleSubmit(onSubmit)}>
-            <Styted.FormHeader>
+        <Styled.FormCadastro onSubmit={handleSubmit(onSubmit)}>
+            <Styled.FormHeader>
                 <h1>Cadastro</h1>
                 <div>
-                    <Styted.Button $active type="button" onClick={handleLogin}>Entrar</Styted.Button>
+                    <Styled.Button $active type="button" onClick={handleLogin}>Entrar</Styled.Button>
                 </div>
-            </Styted.FormHeader>
+            </Styled.FormHeader>
 
-            <Styted.InputBox>
+            <Styled.InputBox>
                 <InputComponent
                     id="email"
                     type="email"
@@ -97,11 +97,11 @@ const CadastroFormComponent = () => {
                     }})}}
                     error={errors.confirmPassword}
                 />
-            </Styted.InputBox>
+            </Styled.InputBox>
 
-            <Styted.Button type="submit" $active={ !errors.email && !errors.password }  disabled={ !!errors.email || !!errors.password }>Cadastrar</Styted.Button>
+            <Styled.Button type="submit" $active={ !errors.email && !errors.password }  disabled={ !!errors.email || !!errors.password }>Cadastrar</Styled.Button>
 
-        </Styted.FormCadastro>
+        </Styled.FormCadastro>
     );
 }
  
