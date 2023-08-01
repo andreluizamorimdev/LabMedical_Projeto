@@ -18,7 +18,6 @@ const SideBarComponent = () => {
 
     const getIcone = (icone: string) => {
         switch(icone) {
-            case 'MdExitToApp': return <Icon.MdExitToApp />;
             case 'MdPersonAdd': return <Icon.MdPersonAdd/>;
             case 'MdList': return <Icon.MdList/>;
             case 'MdAddCircle': return <Icon.MdAddCircle/>;

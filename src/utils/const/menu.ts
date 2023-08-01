@@ -9,30 +9,24 @@ export const MENUS: Array<IMenu> = [
     }, 
     {
         id: 2,
-        titulo: "Sair",
-        path: "/login",
-        icone: "MdExitToApp"
-    },
-    {
-        id: 3,
         titulo: "Cadastrar Pacientes",
         path: "/pacientes",
         icone: "MdPersonAdd"
     },
     {
-        id: 4,
+        id: 3,
         titulo: "Listar Prontuário",
         path: "/prontuarios",
         icone: "MdList"
     },
     {
-        id: 5,
+        id: 4,
         titulo: "Cadastrar Consulta",
         path: "/consultas",
         icone: "MdAddCircle"
     },
     {
-        id: 6,
+        id: 5,
         titulo: "Cadastrar Exame",
         path: "/exames",
         icone: "MdAddCircle"
