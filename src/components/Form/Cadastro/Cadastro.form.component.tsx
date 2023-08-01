@@ -7,6 +7,7 @@ import { useNavigate } from "react-router";
 import { UserService } from "../../../services/User.service";
 import { useAuth } from "../../../hooks/useAuth";
 import { IUser } from "../../../utils/interfaces/IUser";
+import { LocalStorageService } from "../../../services/LocalStorage.service";
 
 const CadastroFormComponent = () => {
     
@@ -48,11 +49,14 @@ const CadastroFormComponent = () => {
     }
 
     const redirectToHome = (user: IUser) => {
+        const userWithoutPassword = {
+            email: user.email,
+        }
+        LocalStorageService.set({key: 'user',  data: userWithoutPassword });
         setAuthentication({
-            user,
+            user: userWithoutPassword,
             isLogged: true,
         });
-        navigate('/');
     }
 
     const handleLogin = () => {

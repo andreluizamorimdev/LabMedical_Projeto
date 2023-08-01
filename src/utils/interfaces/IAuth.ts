@@ -1,6 +1,8 @@
-import { IUser } from "./IUser";
-
+export interface IUserAuth {
+    id?: number;
+    email: string;
+}
 export interface IAuth { 
-    user: IUser,
+    user: IUserAuth,
     isLogged: boolean,
 }

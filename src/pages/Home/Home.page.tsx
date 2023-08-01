@@ -1,11 +1,14 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { useToolbarContext } from "../../hooks/useToolbarContext";
 import { useEffect } from "react";
+import { LocalStorageService } from "../../services/LocalStorage.service";
 
 const HomePage = () => {
 
     const { authentication } = useAuth();
+    const userLogged = LocalStorageService.get('user');
 
     const { setTitulo } = useToolbarContext();
 
@@ -22,7 +25,7 @@ const HomePage = () => {
         );
     }
 
-    return authentication.isLogged ? renderHomePage() : <Navigate to="/login" />;
+    return userLogged || authentication.isLogged ? renderHomePage() : <Navigate to="/login" />;
 
 }
  

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { useNavigate } from "react-router-dom";
 import * as Styled from './Login.style';
@@ -7,6 +8,7 @@ import { IFormLogin } from "./IFormLogin";
 import { UserService } from "../../../services/User.service";
 import { useAuth } from "../../../hooks/useAuth";
 import { IUser } from "../../../utils/interfaces/IUser";
+import { LocalStorageService } from "../../../services/LocalStorage.service";
 
 const LoginFormComponent  = () => {
 
@@ -26,15 +28,25 @@ const LoginFormComponent  = () => {
             reset();
             return;
         }
-        password === user.password ? redirectToHome(user) : alert("Usuário e/ou senha incorretos");
+        if(password === user.password) {
+            redirectToHome(user) 
+        } else {
+            alert("Usuário e/ou senha incorretos");
+        }
+ 
         
     }
 
     const redirectToHome = (user: IUser) => {
+        const userWithoutPassword = {
+            email: user.email,
+        }
+        LocalStorageService.set({key: 'user',  data: userWithoutPassword });
         setAuthentication({
-            user,
+            user: userWithoutPassword,
             isLogged: true,
         });
+
         navigate('/');
     }
 
