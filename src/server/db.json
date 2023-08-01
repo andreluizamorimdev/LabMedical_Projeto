@@ -30,5 +30,35 @@
       "password": "12345678",
       "id": 6
     }
+  ],
+  "pacientes": [
+    {
+      "id": 1,
+      "nomeCompleto": "Manoel da Silva",
+      "genero": "Masculino",
+      "dataNascimento": "1990-01-01",
+      "cpf": "12345678910",
+      "rg": "123456789",
+      "estadoCivil": "Solteiro",
+      "telefone": "11999999999",
+      "contatoEmergencia": "11999999999",
+      "email": "manoel@email.com",
+      "naturalidade": "São Paulo",
+      "alergias": "Nenhuma",
+      "cuidadosEspecificos": "Nenhum",
+      "convenio": "Nenhum",
+      "numeroConvenio": "Nenhum",
+      "validadeConvenio": "Nenhum",
+      "endereco": {
+        "cep": "12345678",
+        "cidade": "São José dos Campos",
+        "estado": "SP",
+        "logradouro": "Rua dos Bobos",
+        "numero": "0",
+        "complemento": "Casa",
+        "bairro": "Jardim das Flores",
+        "pontoReferencia": "Perto da padaria"
+      }
+    }
   ]
 }
