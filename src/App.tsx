@@ -18,11 +18,11 @@ function App() {
           <Route path="/cadastro" element={<CadastroPage />} />
           <Route path="/" element={<Layout />} >
             <Route path="/" element={<HomePage />} />
-            <Route path="/paciente" element={<CadastroPacientePage />} />
-            <Route path="/paciente/:id" element={<CadastroPacientePage />} />
+            <Route path="/pacientes" element={<CadastroPacientePage />} />
+            <Route path="/pacientes/:id" element={<CadastroPacientePage />} />
             <Route path="/prontuarios" element={<ListaProntuarioPage />} />
-            <Route path="/consulta" element={<CadastroConsultaPage />} />
-            <Route path="/exame" element={<CadastroExamePage />} />
+            <Route path="/consultas" element={<CadastroConsultaPage />} />
+            <Route path="/exames" element={<CadastroExamePage />} />
           </Route>
           <Route path="*" element={<h1>Página não encontrada</h1>} />
         </Routes>
