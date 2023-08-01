@@ -4,7 +4,9 @@ import { MdVisibility, MdVisibilityOff } from 'react-icons/md'
 import { IPropsInput } from './IPropsInput';
 import * as Styled from './Input.style';
 
-const InputComponent = ({label, type, id, placeholder, register, error}: IPropsInput) => {
+import { Spin } from 'antd';
+
+const InputComponent = ({label, type, id, placeholder, onBlur , isLoading, register, error}: IPropsInput) => {
     const [showPassword, setShowPassword] = useState(false);
 
     const handleShowPassword = () => {
@@ -16,7 +18,10 @@ const InputComponent = ({label, type, id, placeholder, register, error}: IPropsI
             <Styled.Label $hasError={!!error} htmlFor={id}>{label}</Styled.Label>
             { type !== 'textarea' &&
                 <Styled.InputContainer>
-                    <Styled.Input $hasError={!!error} type={ showPassword ? 'text' : type} id={id} placeholder={placeholder} {...register} />
+                    <Styled.Input $hasError={!!error} type={ showPassword ? 'text' : type} id={id} placeholder={placeholder} onBlur={onBlur} {...register} />
+                    <Styled.Loading>
+                        { isLoading && <Spin size='small' />}
+                    </Styled.Loading>
                     { type === 'password' &&
                     <Styled.Icon $hasError={!!error} type='button' onClick={handleShowPassword} >
                         { !showPassword
