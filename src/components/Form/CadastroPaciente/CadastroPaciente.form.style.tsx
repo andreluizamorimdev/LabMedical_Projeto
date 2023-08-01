@@ -12,6 +12,7 @@ export const FormCadastroPaciente = styled.form`
 
 export const FormHeader = styled(Styled.FormHeader) `
     padding: .5rem;
+    margin-bottom: 1rem;
 `;
 
 export const InputBox = styled(Styled.InputBox) `
@@ -40,11 +41,7 @@ export const Select = styled.select<{$hasError?: boolean}>`
     box-shadow: 1px 1px 6px #0000001c;
     font-size: .8rem;
     border: 1px solid ${({$hasError}) => {return $hasError ? '#FF5432' : '#6c63ff'}};
-
-    &::placeholder{
-        color: ${({$hasError}) => $hasError ? '#FF5432' : '#00000097'};
-    }
-
+    
     &:hover {
         background-color: #f2f2f2;
     }
@@ -55,6 +52,11 @@ export const Option = styled.option`
     font-weight: 600;
     color: #000000c0;
 `;
+
+export const Error = styled.p`
+    font-size: .8rem;
+    color: #FF5432;
+`
 
 export const ButtonBox = styled.div`
     display: flex;
