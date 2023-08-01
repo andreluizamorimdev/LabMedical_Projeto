@@ -3,16 +3,65 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import InputComponent from '../../Input/Input.component';
 import * as Styled from './CadastroPaciente.form.style';
 import { IFormCadastroPaciente } from './IFormCadastroPaciente';
+import { ViaCepService } from '../../../services/ViaCepService';
+import { useState } from 'react';
 
 const CadastroPacienteFormComponent = () => {
+    const [isFetching, setIsFetching] = useState(false);
 
     const {
         register,
         handleSubmit,
+        setValue,
         formState: { errors },
     } = useForm<IFormCadastroPaciente>();
 
+    const buscarEnderecoPorCep = (async (cep: string) => {
+        try {
+            const response = await ViaCepService.Get(cep);
+            if (response) {
+                setValue('endereco.cidade', response.localidade);
+                setValue('endereco.estado', response.uf);
+                setValue('endereco.logradouro', response.logradouro);
+                setValue('endereco.bairro', response.bairro);
+            }
+        } catch (error) {
+            console.error('Erro ao buscar o CEP: ', error);
+        } finally {
+            setIsFetching(false);
+        }
+    });
+
+    const handleCepBlur = (cep: string) => {
+        setIsFetching(true);
+        const debounceTimer = setTimeout(async () => {
+            await buscarEnderecoPorCep(cep);
+        }, 500);
+    
+        return () => clearTimeout(debounceTimer);
+    };
+
     const onSubmit: SubmitHandler<IFormCadastroPaciente> = (data) => {
+        /* 
+        try {
+            const response = await ViaCepService.Get(data.endereco.cep);
+            if(response) {
+                data.endereco = {
+                    cep: response.cep,
+                    cidade: response.localidade,
+                    estado: response.uf,
+                    logradouro: response.logradouro,
+                    numero: data.endereco.numero,
+                    complemento: data.endereco.complemento,
+                    bairro: response.bairro,
+                    pontoReferencia: data.endereco.pontoReferencia,
+                };
+                console.log(response);
+            }
+            
+        } catch (error) {
+            console.error("Erro ao buscar o CEP: ", error);
+        } */
         console.log(data);
     }
 
@@ -181,8 +230,8 @@ const CadastroPacienteFormComponent = () => {
                     id='cep' 
                     type='text' 
                     placeholder='Digite seu CEP'
-                    register={{...register('endereco.cep', {required: "O CEP é obrigatório", pattern: {value: /^\d{5}-\d{3}$/, message: "O CEP deve estar no formato 00000-000"} })}}
-                    error={ errors.endereco?.cep }
+                    onBlur={(e) => handleCepBlur(e.target.value)}
+                    isLoading={isFetching}
                 />
                 <InputComponent 
                     label='Cidade' 
