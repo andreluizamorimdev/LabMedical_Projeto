@@ -1,8 +1,12 @@
+import * as Styled from './CadastroConsulta.style';
+
 const CadastroConsultaPage = () => {
     return (
-        <>
-            <p>CadastroConsultaPage is render</p>
-        </>
+        <Styled.Container>
+            <Styled.Card>
+                
+            </Styled.Card>
+        </Styled.Container>
     );
 }
  
