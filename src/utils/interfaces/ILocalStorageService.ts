@@ -1,6 +1,6 @@
-import { IUser } from "./IUser";
+import { IUserAuth } from "./IAuth";
 
 export interface ILocalStorageService {
     key: string;
-    data: Array<IUser>;
+    data: IUserAuth;
 }

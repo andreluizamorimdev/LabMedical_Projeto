@@ -9,7 +9,6 @@ export const Form = styled.form`
     background-color: #fff;
     padding: 3rem;
     gap: 1rem;
-    background: #FFF;  
     
     @media (max-width: 920px) {
         width: 100%;
@@ -24,6 +23,7 @@ export const FormHeader = styled.legend`
     width: 100%;
     display: flex;
     align-items: center;
+    position: relative;
     justify-content: space-between;
     margin-bottom: 3rem;
 

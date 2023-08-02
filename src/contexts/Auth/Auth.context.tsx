@@ -9,7 +9,6 @@ export const AuthContext = createContext<IAuthContext>({
     authentication: {
         user: {
             email: "",
-            password: "",
         },
         isLogged: false
     },
@@ -20,7 +19,6 @@ export const AuthProvider = ({ children }: IProviderProps) => {
     const [authentication, setAuthentication] = useState({
         user: {
             email: "",
-            password: "",
         },
         isLogged: false
     });

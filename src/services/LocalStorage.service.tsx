@@ -17,7 +17,12 @@ const set = ({key, data}: ILocalStorageService) => {
     localStorage.setItem(key, JSON.stringify(data));
 }
 
+const remove = (key: string) => {
+    localStorage.removeItem(key);
+}
+
 export const LocalStorageService = {
     get,
-    set
+    set,
+    remove
 }

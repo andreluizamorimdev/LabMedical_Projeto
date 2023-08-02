@@ -56,6 +56,16 @@ export const InputContainer = styled.div`
     width: 100%;
 `
 
+export const Loading = styled.div`
+    position: absolute;
+    top: .9rem;
+    right: .6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+`;
+
 export const Icon = styled.button<{$hasError?: boolean}>`
     position: absolute;
     top: 1.2rem;

@@ -4,12 +4,14 @@ import * as Styled from './Cadastro.style';
 
 const CadastroPage = () => {
     return ( 
-        <Styled.CadastroCard>
-            <Styled.CadastroImageBox>
-                <img className="image" src={image_cadastro} alt="Dois médicos, um com as mãos no bolso e ao lado de um vaso de plantas, e uma anotando dados numa ficha e um coração no meio dos dois simbolizando o amor a medicina" />
-            </Styled.CadastroImageBox>
-            <CadastroFormComponent />
-        </Styled.CadastroCard>
+        <Styled.CadastroContainer>
+            <Styled.CadastroCard>
+                <Styled.CadastroImageBox>
+                    <img className="image" src={image_cadastro} alt="Dois médicos lado a lado, um deles com uma ficha de prontuário na mão" />
+                </Styled.CadastroImageBox>
+                <CadastroFormComponent />
+            </Styled.CadastroCard>
+        </Styled.CadastroContainer>
     );
 }
  

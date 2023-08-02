@@ -2,7 +2,7 @@
   "users": [
     {
       "id": 1,
-      "email": "adm@labmedical.com",
+      "email": "administrador@labmedical.com",
       "password": "12345678"
     },
     {
@@ -24,6 +24,95 @@
       "email": "andre@teste.com",
       "password": "12345678",
       "id": 5
+    },
+    {
+      "email": "AndreTeste@email.com",
+      "password": "12345678",
+      "id": 6
+    }
+  ],
+  "pacientes": [
+    {
+      "id": 1,
+      "nomeCompleto": "Manoel da Silva",
+      "genero": "Masculino",
+      "dataNascimento": "1990-01-01",
+      "cpf": "123.456.789-10",
+      "rg": "12.345.678-9",
+      "estadoCivil": "Solteiro(a)",
+      "telefone": "(11) 99999-9999",
+      "contatoEmergencia": "(11) 99999-9999",
+      "email": "manoel@email.com",
+      "naturalidade": "São Paulo",
+      "alergias": "Nenhuma",
+      "cuidadosEspecificos": "Nenhum",
+      "convenio": "Nenhum",
+      "numeroConvenio": "Nenhum",
+      "validadeConvenio": "Nenhum",
+      "endereco": {
+        "cep": "11675-250",
+        "cidade": "Caraguatatuba",
+        "estado": "SP",
+        "logradouro": "Rodovia dos Tamoios",
+        "numero": "12",
+        "complemento": "Casa",
+        "bairro": "Jaraguazinho",
+        "pontoReferencia": "Perto da padaria"
+      }
+    },
+    {
+      "id": 2,
+      "nomeCompleto": "Mauricio Tester",
+      "genero": "Masculino",
+      "dataNascimento": "1997-06-11",
+      "cpf": "112.222.134-00",
+      "rg": "11.234.222-1",
+      "estadoCivil": "Separado(a)",
+      "telefone": "(48) 99826-4221",
+      "contatoEmergencia": "(48) 99826-4221",
+      "email": "mauricioTester@gmail.com",
+      "naturalidade": "São Paulo",
+      "convenio": "Não tenho",
+      "numeroConvenio": "Não tenho",
+      "validadeConvenio": "Não tenho",
+      "endereco": {
+        "cep": "88113-110",
+        "cidade": "São José",
+        "estado": "SC",
+        "logradouro": "Rua Nossa Senhora de Lourdes",
+        "numero": "220",
+        "complemento": "Casa",
+        "bairro": "Areias",
+        "pontoReferencia": "Loja da nike"
+      }
+    },
+    {
+      "id": 3,
+      "nomeCompleto": "Fernando da Silva Maluco",
+      "genero": "Masculino",
+      "dataNascimento": "1999-12-22",
+      "cpf": "133.444.222-13",
+      "rg": "22.332.444-3",
+      "estadoCivil": "Casado(a)",
+      "telefone": "(44) 98879-7659",
+      "contatoEmergencia": "(44) 98879-7659",
+      "email": "fernando_silva_maluco@gmail.com",
+      "naturalidade": "Florianopolis",
+      "alergias": "PARACETAMAL",
+      "cuidadosEspecificos": "INTOLERANCIA A LATICINIOS",
+      "convenio": "Unimed",
+      "numeroConvenio": "0-031-0213-123456-00-7",
+      "validadeConvenio": "23/12/2026",
+      "endereco": {
+        "cep": "88113-835",
+        "cidade": "São José",
+        "estado": "SC",
+        "logradouro": "Rua Manoel Rosa",
+        "numero": "45",
+        "complemento": "Casa",
+        "bairro": "Areias",
+        "pontoReferencia": "Proximo a styroValey"
+      }
     }
   ]
 }
