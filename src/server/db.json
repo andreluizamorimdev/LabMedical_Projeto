@@ -88,7 +88,7 @@
     },
     {
       "id": 3,
-      "nomeCompleto": "Fernando da Silva Maluco",
+      "nomeCompleto": "Fernando da Silva",
       "genero": "Masculino",
       "dataNascimento": "1999-12-22",
       "cpf": "133.444.222-13",
@@ -96,9 +96,9 @@
       "estadoCivil": "Casado(a)",
       "telefone": "(44) 98879-7659",
       "contatoEmergencia": "(44) 98879-7659",
-      "email": "fernando_silva_maluco@gmail.com",
+      "email": "fernando_silva@gmail.com",
       "naturalidade": "Florianopolis",
-      "alergias": "PARACETAMAL",
+      "alergias": "PARACETAMOL",
       "cuidadosEspecificos": "INTOLERANCIA A LATICINIOS",
       "convenio": "Unimed",
       "numeroConvenio": "0-031-0213-123456-00-7",
@@ -113,6 +113,71 @@
         "bairro": "Areias",
         "pontoReferencia": "Proximo a styroValey"
       }
+    }
+  ],
+  "consultas": [
+    {
+      "id": "1",
+      "pacienteId": "1",
+      "motivoConsulta": "Consulta de rotina",
+      "dataConsulta": "2023-07-31",
+      "horarioConsulta": "15:30",
+      "descricaoProblema": "Paciente veio para um check-up de rotina.",
+      "medicacaoReceitada": "Paracetamol",
+      "dosagemPrecaucoes": "Tomar 1 comprimido a cada 6 horas."
+    },
+    {
+      "id": "2",
+      "pacienteId": "2",
+      "motivoConsulta": "Dor de cabeça",
+      "dataConsulta": "2023-08-01",
+      "horarioConsulta": "10:00",
+      "descricaoProblema": "Paciente apresentou dor de cabeça constante.",
+      "medicacaoReceitada": "Dipirona",
+      "dosagemPrecaucoes": "Tomar 1 comprimido a cada 8 horas."
+    },
+    {
+      "id": "3",
+      "pacienteId": "1",
+      "motivoConsulta": "Resultado de exames",
+      "dataConsulta": "2023-08-02",
+      "horarioConsulta": "14:00",
+      "descricaoProblema": "Paciente veio para receber os resultados de exames anteriores.",
+      "dosagemPrecaucoes": "Nenhum medicamento receitado."
+    }
+  ],
+  "exames": [
+    {
+      "id": 1,
+      "pacienteId": 1,
+      "nome": "Exame de Sangue",
+      "data": "2023-07-31",
+      "horario": "09:30",
+      "tipo": "Hemograma",
+      "laboratorio": "Laboratório ABC",
+      "urlDocumento": "https://example.com/documento1",
+      "resultados": "Os resultados do exame de sangue estão dentro dos valores normais."
+    },
+    {
+      "id": 2,
+      "pacienteId": 2,
+      "nome": "Exame de Urina",
+      "data": "2023-08-02",
+      "horario": "14:00",
+      "tipo": "Análise de Urina",
+      "laboratorio": "Laboratório XYZ",
+      "resultados": "Não foram encontradas irregularidades no exame de urina."
+    },
+    {
+      "id": 3,
+      "pacienteId": 1,
+      "nome": "Exame de Imagem",
+      "data": "2023-08-05",
+      "horario": "11:45",
+      "tipo": "Ressonância Magnética",
+      "laboratorio": "Hospital 123",
+      "urlDocumento": "https://example.com/documento2",
+      "resultados": "A ressonância magnética não apresentou sinais de anomalias."
     }
   ]
 }
