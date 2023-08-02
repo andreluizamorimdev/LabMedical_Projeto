@@ -9,10 +9,15 @@ import { UserService } from "../../../services/User.service";
 import { useAuth } from "../../../hooks/useAuth";
 import { IUser } from "../../../utils/interfaces/IUser";
 import { LocalStorageService } from "../../../services/LocalStorage.service";
+import { toast } from "react-toastify";
+import { useState } from "react";
+import ModalComponent from "../../Modal/Modal.component";
 
 const LoginFormComponent  = () => {
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm<IFormLogin>();
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const navigate = useNavigate();
 
@@ -24,14 +29,14 @@ const LoginFormComponent  = () => {
         const user = await UserService.ShowByEmail(email);
 
         if(!user) {
-            alert("Usuário não encontrado");
+            toast.error("Usuário não encontrado");
             reset();
             return;
         }
         if(password === user.password) {
             redirectToHome(user) 
         } else {
-            alert("Usuário e/ou senha incorretos");
+            toast.error("Usuário e/ou senha incorretos");
         }
  
         
@@ -51,7 +56,7 @@ const LoginFormComponent  = () => {
     }
 
     const handleEsqueciSenha = () => {
-        alert("Recurso de Esqueci minha senha está em desenvolvimento");
+        setIsModalOpen(true);
     }
 
     const handleCadastrar = () => {
@@ -89,6 +94,10 @@ const LoginFormComponent  = () => {
                 <Styled.Button $active={ !errors.email && !errors.password } disabled={ !!errors.email || !!errors.password } type="submit">Entrar</Styled.Button>
 
                 <Styled.EsquiciSenha onClick={handleEsqueciSenha}>Esqueceu sua senha? Clique aqui</Styled.EsquiciSenha>
+                <ModalComponent isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+                    <h2>Esqueci Minha Senha</h2>
+                    <p>Recurso de Esqueci Minha Senha está em desenvolvimento no momento.</p>
+                </ModalComponent>
 
             </Styled.Form>
     );

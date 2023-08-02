@@ -8,6 +8,7 @@ import { UserService } from "../../../services/User.service";
 import { useAuth } from "../../../hooks/useAuth";
 import { IUser } from "../../../utils/interfaces/IUser";
 import { LocalStorageService } from "../../../services/LocalStorage.service";
+import { toast } from "react-toastify";
 
 const CadastroFormComponent = () => {
     
@@ -34,13 +35,13 @@ const CadastroFormComponent = () => {
         const user = await UserService.ShowByEmail(email);
 
         if(user) {
-            alert("Usuário já cadastrado no sistema");
+            toast.error("Usuário já cadastrado no sistema");
             reset();
             return;
         }
         if(password === confirmPassword) {
             await UserService.Create(newUser);
-            alert("Usuário cadastrado com sucesso");
+            toast.success("Usuário cadastrado com sucesso");
             reset();
             redirectToHome(newUser);
         }       
