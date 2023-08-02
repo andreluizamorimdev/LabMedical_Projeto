@@ -22,7 +22,9 @@ function App() {
             <Route path="/pacientes/:id" element={<CadastroPacientePage />} />
             <Route path="/prontuarios" element={<ListaProntuarioPage />} />
             <Route path="/consultas" element={<CadastroConsultaPage />} />
+            <Route path="/consultas/:id" element={<CadastroConsultaPage />} />
             <Route path="/exames" element={<CadastroExamePage />} />
+            <Route path="/exames/:id" element={<CadastroExamePage />} />
           </Route>
           <Route path="*" element={<h1>Página não encontrada</h1>} />
         </Routes>

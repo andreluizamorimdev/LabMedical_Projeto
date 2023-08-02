@@ -117,8 +117,8 @@
   ],
   "consultas": [
     {
-      "id": "1",
-      "pacienteId": "1",
+      "id": 1,
+      "pacienteId": 1,
       "motivoConsulta": "Consulta de rotina",
       "dataConsulta": "2023-07-31",
       "horarioConsulta": "15:30",
@@ -127,8 +127,8 @@
       "dosagemPrecaucoes": "Tomar 1 comprimido a cada 6 horas."
     },
     {
-      "id": "2",
-      "pacienteId": "2",
+      "id": 2,
+      "pacienteId": 2,
       "motivoConsulta": "Dor de cabeça",
       "dataConsulta": "2023-08-01",
       "horarioConsulta": "10:00",
@@ -137,13 +137,23 @@
       "dosagemPrecaucoes": "Tomar 1 comprimido a cada 8 horas."
     },
     {
-      "id": "3",
-      "pacienteId": "1",
+      "id": 3,
+      "pacienteId": 1,
       "motivoConsulta": "Resultado de exames",
       "dataConsulta": "2023-08-02",
       "horarioConsulta": "14:00",
       "descricaoProblema": "Paciente veio para receber os resultados de exames anteriores.",
       "dosagemPrecaucoes": "Nenhum medicamento receitado."
+    },
+    {
+      "id": 4,
+      "pacienteId": 1,
+      "motivoConsulta": "Dor de Cabeça",
+      "dataConsulta": "2023-08-02",
+      "horarioConsulta": "20:44",
+      "descricaoProblema": "O paciente apresenta um grave caso de cansaço mental, o que está causando a dor de cabeça.",
+      "medicaoReceitada": "Paracetamol",
+      "dosagemPrecaucoes": "Paracetamol de 500g, de 12 em 12 horas, aumentar a dosagem para 6 em 6 horas caso precise."
     }
   ],
   "exames": [

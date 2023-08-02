@@ -7,7 +7,13 @@ import * as Styled from './CadastroConsulta.form.style';
 import { IFormDataCadastroConsulta } from './IFormDataCadastroConsulta';
 import { IConsulta } from '../../../utils/interfaces/IConsulta';
 import { ConsultaService } from '../../../services/Consultas.service';
-const CadastroConsultaFormComponent = () => {
+import { ICadastroConsultaFormComponentProps } from './ICadastroConsultaFormComponentProps';
+import { useNavigate } from 'react-router-dom';
+
+
+const CadastroConsultaFormComponent = ({ pacienteEncontrado, idConsulta }: ICadastroConsultaFormComponentProps) => {
+
+    const navigate = useNavigate();
 
     const {
         register,
@@ -23,7 +29,7 @@ const CadastroConsultaFormComponent = () => {
         try {
             const consultaData: IConsulta = {
                 id: 0,
-                pacienteId: 0,
+                pacienteId: pacienteEncontrado.id,
                 motivoConsulta: data.motivoConsulta,
                 dataConsulta: data.dataConsulta,
                 horarioConsulta: data.horarioConsulta,
@@ -42,13 +48,32 @@ const CadastroConsultaFormComponent = () => {
         console.log(data);
     };
 
+    
+    const handleDeletarConsulta = () => {
+        if (!idConsulta) {
+            return;
+        }
+
+        if (window.confirm('Tem certeza que deseja excluir esta consulta?')) {
+            ConsultaService.DeleteConsulta(parseInt(idConsulta))
+                .then(() => {
+                    toast.success('Consulta excluída com sucesso');
+                    navigate('/consultas');
+                })
+                .catch((error) => {
+                    toast.error('Erro ao excluir a consulta');
+                    console.error('Erro ao excluir a consulta: ', error);
+            });
+        }
+    }
+
     return (
         <Styled.FormCadastroConsulta onSubmit={handleSubmit(onSubmit)}>
             <Styled.FormHeader>
-                <h1>Consulta de (Nome Paciente)</h1>
+                <h1>Consulta de {pacienteEncontrado.nomeCompleto}</h1>
                 <Styled.ButtonBox>
                     <Styled.Button type="button" disabled >Editar</Styled.Button>
-                    <Styled.Button $outlined type="button" disabled >Deletar</Styled.Button>
+                    <Styled.Button $outlined type="button" onClick={handleDeletarConsulta} disabled >Deletar</Styled.Button>
                     <Styled.Button $active type="submit">Salvar</Styled.Button>
                 </Styled.ButtonBox>
             </Styled.FormHeader>

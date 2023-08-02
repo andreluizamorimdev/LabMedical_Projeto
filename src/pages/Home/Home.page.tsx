@@ -47,7 +47,7 @@ const HomePage = () => {
 
     }, []);
 
-    const handleBuscarPacientes = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleBuscarPacientes = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setBusca(event.target.value);
     };
 
