@@ -6,14 +6,14 @@ import * as Styled from './Input.style';
 
 import ReactLoading from 'react-loading';
 
-const InputComponent = ({label, type, id, placeholder, onBlur , isLoading, register, error, value, onChange}: IPropsInput) => {
+const InputComponent = ({label, type, id, placeholder, onBlur , isLoading, register, error, value, onChange, rows, defaultValue }: IPropsInput) => {
     const [showPassword, setShowPassword] = useState(false);
 
     const handleShowPassword = () => {
         setShowPassword(!showPassword);
     }
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         if (onChange) {
             onChange(e);
         }
@@ -24,7 +24,7 @@ const InputComponent = ({label, type, id, placeholder, onBlur , isLoading, regis
             <Styled.Label $hasError={!!error} htmlFor={id}>{label}</Styled.Label>
             { type !== 'textarea' &&
                 <Styled.InputContainer>
-                    <Styled.Input $hasError={!!error} type={ showPassword ? 'text' : type} id={id} placeholder={placeholder} onBlur={onBlur} {...register} value={value} onChange={handleChange} />
+                    <Styled.Input $hasError={!!error} type={ showPassword ? 'text' : type} id={id} placeholder={placeholder} onBlur={onBlur} {...register} value={value || defaultValue} onChange={handleChange} />
                     <Styled.Loading>
                         { isLoading && <ReactLoading type='spin' color='#6c63ff' width={'2rem'} />}
                     </Styled.Loading>
@@ -43,10 +43,12 @@ const InputComponent = ({label, type, id, placeholder, onBlur , isLoading, regis
             
 
             {
-                type === 'textarea' &&
-                <Styled.TextArea $hasError={!!error} id={id} placeholder={placeholder} {...register} />
+                type === 'textarea' &&  
+                <Styled.TextAreaContainer>
+                    <Styled.TextArea $hasError={!!error} id={id} placeholder={placeholder} rows={rows} value={value || defaultValue} onChange={handleChange} {...register} />
+                    { error && <Styled.Error>{error.message}</Styled.Error>}
+                </Styled.TextAreaContainer>
             }
-            { error && <Styled.Error>{error.message}</Styled.Error>}
         </Styled.InputBox>
     );
 }

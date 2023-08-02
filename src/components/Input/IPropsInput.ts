@@ -11,5 +11,7 @@ export interface IPropsInput extends Omit<React.InputHTMLAttributes<HTMLInputEle
     register?: UseFormRegisterReturn;
     error?: FieldError;
     value?: string | undefined;
-    onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+    onChange?: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+    rows?: number;
+    defaultValue?: string;
 }
