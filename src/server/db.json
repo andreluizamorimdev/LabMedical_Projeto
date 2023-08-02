@@ -85,6 +85,34 @@
         "bairro": "Areias",
         "pontoReferencia": "Loja da nike"
       }
+    },
+    {
+      "id": 3,
+      "nomeCompleto": "Fernando da Silva Maluco",
+      "genero": "Masculino",
+      "dataNascimento": "1999-12-22",
+      "cpf": "133.444.222-13",
+      "rg": "22.332.444-3",
+      "estadoCivil": "Casado(a)",
+      "telefone": "(44) 98879-7659",
+      "contatoEmergencia": "(44) 98879-7659",
+      "email": "fernando_silva_maluco@gmail.com",
+      "naturalidade": "Florianopolis",
+      "alergias": "PARACETAMAL",
+      "cuidadosEspecificos": "INTOLERANCIA A LATICINIOS",
+      "convenio": "Unimed",
+      "numeroConvenio": "0-031-0213-123456-00-7",
+      "validadeConvenio": "23/12/2026",
+      "endereco": {
+        "cep": "88113-835",
+        "cidade": "São José",
+        "estado": "SC",
+        "logradouro": "Rua Manoel Rosa",
+        "numero": "45",
+        "complemento": "Casa",
+        "bairro": "Areias",
+        "pontoReferencia": "Proximo a styroValey"
+      }
     }
   ]
 }
