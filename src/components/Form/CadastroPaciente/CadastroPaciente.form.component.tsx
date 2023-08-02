@@ -1,15 +1,21 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { useEffect, useState } from 'react';
+import { SubmitHandler, set, useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
+
 import InputComponent from '../../Input/Input.component';
 import * as Styled from './CadastroPaciente.form.style';
 import { IFormCadastroPaciente } from './IFormCadastroPaciente';
 import { ViaCepService } from '../../../services/ViaCepService';
-import { useState } from 'react';
 import { IPaciente } from '../../../utils/interfaces/IPaciente';
 import { PacienteService } from '../../../services/Paciente.service';
-import { toast } from 'react-toastify';
-const CadastroPacienteFormComponent = () => {
+
+const CadastroPacienteFormComponent = ({ paciente }: { paciente: IPaciente}) => {
     const [isFetching, setIsFetching] = useState(false);
+
+    const [isEditMode, setIsEditMode] = useState(false);
 
     const [cepValue, setCepValue] = useState('');
 
@@ -20,6 +26,37 @@ const CadastroPacienteFormComponent = () => {
         getValues,
         formState: { errors },
     } = useForm<IFormCadastroPaciente>();
+
+    useEffect(() => {
+        if (paciente) {
+            setIsEditMode(true);
+            setValue('nomeCompleto', paciente.nomeCompleto);
+            setValue('genero', paciente.genero);
+            setValue('dataNascimento', paciente.dataNascimento);
+            setValue('cpf', paciente.cpf);
+            setValue('rg', paciente.rg);
+            setValue('estadoCivil', paciente.estadoCivil);
+            setValue('telefone', paciente.telefone);
+            setValue('contatoEmergencia', paciente.contatoEmergencia);
+            setValue('email', paciente.email);
+            setValue('naturalidade', paciente.naturalidade);
+            setValue('alergias', paciente.alergias);
+            setValue('cuidadosEspecificos', paciente.cuidadosEspecificos);
+            setValue('convenio', paciente.convenio);
+            setValue('numeroConvenio', paciente.numeroConvenio);
+            setValue('validadeConvenio', paciente.validadeConvenio);
+            setCepValue(paciente.endereco.cep);
+            setValue('endereco.cidade', paciente.endereco.cidade);
+            setValue('endereco.estado', paciente.endereco.estado);
+            setValue('endereco.logradouro', paciente.endereco.logradouro);
+            setValue('endereco.numero', paciente.endereco.numero);
+            setValue('endereco.complemento', paciente.endereco.complemento);
+            setValue('endereco.bairro', paciente.endereco.bairro);
+            setValue('endereco.pontoReferencia', paciente.endereco.pontoReferencia);
+        } else {
+            setIsEditMode(false);
+        }
+    }, [paciente]);
 
     const buscarEnderecoPorCep = (async (cep: string) => {
         try {
@@ -96,8 +133,8 @@ const CadastroPacienteFormComponent = () => {
             <Styled.FormHeader>
                 <h1>Identificação</h1>
                 <Styled.ButtonBox>
-                    <Styled.Button $active type="button">Editar</Styled.Button>
-                    <Styled.Button $outlined type="button">Deletar</Styled.Button>
+                    <Styled.Button $active={isEditMode} type="button" disabled={!isEditMode} >Editar</Styled.Button>
+                    <Styled.Button $active={isEditMode} $outlined type="button" disabled={!isEditMode} >Deletar</Styled.Button>
                     <Styled.Button $active type="submit">Salvar</Styled.Button>
                 </Styled.ButtonBox>
             </Styled.FormHeader>
@@ -271,6 +308,8 @@ const CadastroPacienteFormComponent = () => {
                     placeholder='Digite seu CEP'
                     onBlur={(e) => handleCepBlur(e.target.value)}
                     isLoading={isFetching}
+                    value={cepValue}
+                    onChange={(e) => setCepValue(e.target.value)}
                 />
                 <InputComponent 
                     label='Cidade' 

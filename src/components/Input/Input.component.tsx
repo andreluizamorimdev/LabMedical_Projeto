@@ -6,19 +6,25 @@ import * as Styled from './Input.style';
 
 import ReactLoading from 'react-loading';
 
-const InputComponent = ({label, type, id, placeholder, onBlur , isLoading, register, error}: IPropsInput) => {
+const InputComponent = ({label, type, id, placeholder, onBlur , isLoading, register, error, value, onChange}: IPropsInput) => {
     const [showPassword, setShowPassword] = useState(false);
 
     const handleShowPassword = () => {
         setShowPassword(!showPassword);
     }
 
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (onChange) {
+            onChange(e);
+        }
+    };
+
     return ( 
         <Styled.InputBox>
             <Styled.Label $hasError={!!error} htmlFor={id}>{label}</Styled.Label>
             { type !== 'textarea' &&
                 <Styled.InputContainer>
-                    <Styled.Input $hasError={!!error} type={ showPassword ? 'text' : type} id={id} placeholder={placeholder} onBlur={onBlur} {...register} />
+                    <Styled.Input $hasError={!!error} type={ showPassword ? 'text' : type} id={id} placeholder={placeholder} onBlur={onBlur} {...register} value={value} onChange={handleChange} />
                     <Styled.Loading>
                         { isLoading && <ReactLoading type='spin' color='#6c63ff' width={'2rem'} />}
                     </Styled.Loading>
