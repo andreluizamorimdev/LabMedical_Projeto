@@ -18,7 +18,6 @@ const CadastroPacienteFormComponent = () => {
         handleSubmit,
         setValue,
         getValues,
-        reset,
         formState: { errors },
     } = useForm<IFormCadastroPaciente>();
 
