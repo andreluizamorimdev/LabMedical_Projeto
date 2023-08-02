@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
-import { SubmitHandler, set, useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
 import InputComponent from '../../Input/Input.component';
