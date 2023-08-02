@@ -83,7 +83,7 @@ const HomePage = () => {
                             <Styled.CardEstatistica>
 
                                 <Styled.CardEstatisticaAvatar>
-                                    <MdPeopleAlt /> {0}
+                                    <MdMedicalServices /> {0}
                                 </Styled.CardEstatisticaAvatar>
                                 
                                 <Styled.TituloCardEstatistica>Exames</Styled.TituloCardEstatistica>
