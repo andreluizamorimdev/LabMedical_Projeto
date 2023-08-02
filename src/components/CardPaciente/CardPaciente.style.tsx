@@ -6,7 +6,7 @@ export const CardPaciente = styled.div`
     box-shadow: 0 0 10px #6b63ff6c;
     padding: 3rem;
     margin: 10px;
-    width: 40%;
+    width: 30%;
     height: auto;
 
     display: flex;
