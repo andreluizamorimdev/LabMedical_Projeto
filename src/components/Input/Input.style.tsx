@@ -58,8 +58,8 @@ export const InputContainer = styled.div`
 
 export const Loading = styled.div`
     position: absolute;
-    top: 1.5rem;
-    right: 1.2rem;
+    top: .9rem;
+    right: .6rem;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
 
-import * as Icon from 'react-icons/md'
+import {MdMenu, MdMenuOpen, MdStackedBarChart, MdPersonAdd, MdList, MdAddCircle} from 'react-icons/md'
 
 import { MENUS } from '../../utils/const/menu';
 import Logo from '../../assets/images/LABMedicalLogo.png';
@@ -18,10 +18,10 @@ const SideBarComponent = () => {
 
     const getIcone = (icone: string) => {
         switch(icone) {
-            case 'MdPersonAdd': return <Icon.MdPersonAdd/>;
-            case 'MdList': return <Icon.MdList/>;
-            case 'MdAddCircle': return <Icon.MdAddCircle/>;
-            default: return <Icon.MdStackedBarChart/>;
+            case 'MdPersonAdd': return <MdPersonAdd/>;
+            case 'MdList': return <MdList/>;
+            case 'MdAddCircle': return <MdAddCircle/>;
+            default: return <MdStackedBarChart/>;
         }
     }
 
@@ -40,8 +40,8 @@ const SideBarComponent = () => {
         <Styled.SideBar $open={open}>
             <Styled.SideBarButton onClick={handleOpen}>
                 {open 
-                    ? <span>Menu <Icon.MdMenuOpen /></span>
-                    : <Icon.MdMenu /> }
+                    ? <span>Menu <MdMenuOpen /></span>
+                    : <MdMenu /> }
             </Styled.SideBarButton>
             
             { renderMenuItems() }
