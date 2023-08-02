@@ -1,7 +1,7 @@
 export interface IFormCadastroPaciente {
     nomeCompleto: string;
     genero: string;
-    dataNascimento: Date;
+    dataNascimento: string;
     cpf: string;
     rg: string;
     estadoCivil: string;

@@ -2,7 +2,7 @@ export interface IPaciente {
     id?: number;
     nomeCompleto: string;
     genero: string;
-    dataNascimento: Date;
+    dataNascimento: string;
     cpf: string;
     rg: string;
     estadoCivil: string;

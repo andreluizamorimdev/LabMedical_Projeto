@@ -32,6 +32,17 @@ const GetPacienteById = async (id: number) => {
     return paciente;
 }
 
+const GetPacienteByCpf = async (cpf: string) => {
+    let filter = `?`;
+    if(cpf) {
+        filter += `cpf=${cpf}&`;
+    }
+    const response = await fetch(`${API_URL}/pacientes${filter}`);
+    const paciente = await response.json() as IPaciente;
+    
+    return paciente;
+}
+
 const UpdatePaciente = async (id:number, updatedPaciente: IPaciente) => {
     await fetch(`${API_URL}/pacientes/${id}`, {
         method: 'PUT',
@@ -64,6 +75,7 @@ export const PacienteService = {
     GetPacientes,
     CreatePaciente,
     GetPacienteById,
+    GetPacienteByCpf,
     UpdatePaciente,
     DeletePaciente,
 }

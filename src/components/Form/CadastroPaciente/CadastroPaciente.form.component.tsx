@@ -5,14 +5,20 @@ import * as Styled from './CadastroPaciente.form.style';
 import { IFormCadastroPaciente } from './IFormCadastroPaciente';
 import { ViaCepService } from '../../../services/ViaCepService';
 import { useState } from 'react';
-
+import { IPaciente } from '../../../utils/interfaces/IPaciente';
+import { PacienteService } from '../../../services/Paciente.service';
+import { toast } from 'react-toastify';
 const CadastroPacienteFormComponent = () => {
     const [isFetching, setIsFetching] = useState(false);
+
+    const [cepValue, setCepValue] = useState('');
 
     const {
         register,
         handleSubmit,
         setValue,
+        getValues,
+        reset,
         formState: { errors },
     } = useForm<IFormCadastroPaciente>();
 
@@ -37,32 +43,60 @@ const CadastroPacienteFormComponent = () => {
         const debounceTimer = setTimeout(async () => {
             await buscarEnderecoPorCep(cep);
         }, 500);
-    
+        
+        setCepValue(cep);
+
         return () => clearTimeout(debounceTimer);
     };
 
-    const onSubmit: SubmitHandler<IFormCadastroPaciente> = (data) => {
-        /* 
+    const onSubmit: SubmitHandler<IFormCadastroPaciente> = async (data) => {
         try {
-            const response = await ViaCepService.Get(data.endereco.cep);
-            if(response) {
-                data.endereco = {
-                    cep: response.cep,
-                    cidade: response.localidade,
-                    estado: response.uf,
-                    logradouro: response.logradouro,
-                    numero: data.endereco.numero,
-                    complemento: data.endereco.complemento,
-                    bairro: response.bairro,
-                    pontoReferencia: data.endereco.pontoReferencia,
-                };
-                console.log(response);
+
+            const paciente = await PacienteService.GetPacienteByCpf(data.cpf);
+            if(paciente) {
+                toast.error('CPF já cadastrado no sistema');
+                reset();
+                return;
             }
+
+            const endereco = {
+                cep: cepValue,
+                cidade: getValues('endereco.cidade'),
+                estado: getValues('endereco.estado'),
+                logradouro: getValues('endereco.logradouro'),
+                numero: getValues('endereco.numero'),
+                complemento: getValues('endereco.complemento'),
+                bairro: getValues('endereco.bairro'),
+                pontoReferencia: getValues('endereco.pontoReferencia'),
+            };
+
+            const pacienteData: IPaciente = {
+                id: 0,
+                nomeCompleto: data.nomeCompleto,
+                genero: data.genero,
+                dataNascimento: data.dataNascimento,
+                cpf: data.cpf,
+                rg: data.rg,
+                estadoCivil: data.estadoCivil,
+                telefone: data.telefone,
+                contatoEmergencia: data.contatoEmergencia,
+                email: data.email,
+                naturalidade: data.naturalidade,
+                alergias: data.alergias,
+                cuidadosEspecificos: data.cuidadosEspecificos,
+                convenio: data.convenio,
+                numeroConvenio: data.numeroConvenio,
+                validadeConvenio: data.validadeConvenio,
+                endereco: endereco,
+            };
+
+            await PacienteService.CreatePaciente(pacienteData);
             
+            toast.success('Paciente cadastrado com sucesso!');
         } catch (error) {
-            console.error("Erro ao buscar o CEP: ", error);
-        } */
-        console.log(data);
+            console.error('Erro ao cadastrar o paciente: ', error);
+            toast.error('Erro ao cadastrar o paciente!');
+        }
     }
 
     return (
@@ -99,7 +133,20 @@ const CadastroPacienteFormComponent = () => {
                     label='Data de Nascimento' 
                     id='dataNascimento' 
                     type='date'
-                    register={{...register('dataNascimento', {required: "A data de nascimento é obrigatória", validate: {min: (v:Date) => new Date(v) <= new Date() ? true : "A data de nascimento deve ser menor ou igual a data atual"}  })}}
+                    register={{...register('dataNascimento', {required: "A data de nascimento é obrigatória", validate: {validDate: (value) => {
+                        const selectedDate = new Date(value);
+                        const currentDate = new Date();
+        
+                        if (isNaN(selectedDate.getTime())) {
+                            return 'A data de nascimento deve ser uma data válida';
+                        }
+        
+                        if (selectedDate > currentDate) {
+                            return 'A data de nascimento não pode ser no futuro';
+                        }
+                            return true;
+                        } 
+                    }})}}
                     error={errors.dataNascimento}
                 />
             </Styled.InputBox>
