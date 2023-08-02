@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
 import { SubmitHandler, set, useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
@@ -11,14 +12,20 @@ import { IFormCadastroPaciente } from './IFormCadastroPaciente';
 import { ViaCepService } from '../../../services/ViaCepService';
 import { IPaciente } from '../../../utils/interfaces/IPaciente';
 import { PacienteService } from '../../../services/Paciente.service';
+import { FormaterTelefone } from '../../../utils/formats/FormaterTelefone';
+import { FormaterCPF } from '../../../utils/formats/FormaterCPF';
+import { FormaterRG } from '../../../utils/formats/FormaterRG';
 
 const CadastroPacienteFormComponent = ({ paciente }: { paciente: IPaciente}) => {
     const [isFetching, setIsFetching] = useState(false);
 
     const [isEditMode, setIsEditMode] = useState(false);
+    const [isCadastroMode, setIsCadastroMode] = useState(true);
+
+    const navigate = useNavigate();
 
     const [cepValue, setCepValue] = useState('');
-
+    
     const {
         register,
         handleSubmit,
@@ -29,6 +36,7 @@ const CadastroPacienteFormComponent = ({ paciente }: { paciente: IPaciente}) => 
 
     useEffect(() => {
         if (paciente) {
+            setIsCadastroMode(false);
             setIsEditMode(true);
             setValue('nomeCompleto', paciente.nomeCompleto);
             setValue('genero', paciente.genero);
@@ -85,6 +93,52 @@ const CadastroPacienteFormComponent = ({ paciente }: { paciente: IPaciente}) => 
         return () => clearTimeout(debounceTimer);
     };
 
+    const handleEditarClick = () => {
+        setIsEditMode(true);
+    };
+
+    const handleCancelarClick = () => {
+        setIsEditMode(false);
+        if (paciente) {
+            setValue('nomeCompleto', paciente.nomeCompleto);
+            setValue('genero', paciente.genero);
+            setValue('dataNascimento', paciente.dataNascimento);
+            setValue('cpf', FormaterCPF(paciente.cpf));
+            setValue('rg', FormaterRG(paciente.rg));
+            setValue('estadoCivil', paciente.estadoCivil);
+            setValue('telefone', FormaterTelefone(paciente.telefone));
+            setValue('contatoEmergencia', FormaterTelefone(paciente.contatoEmergencia));
+            setValue('email', paciente.email);
+            setValue('naturalidade', paciente.naturalidade);
+            setValue('alergias', paciente.alergias);
+            setValue('cuidadosEspecificos', paciente.cuidadosEspecificos);
+            setValue('convenio', paciente.convenio);
+            setValue('numeroConvenio', paciente.numeroConvenio);
+            setValue('validadeConvenio', paciente.validadeConvenio);
+            setCepValue(paciente.endereco.cep);
+            setValue('endereco.cidade', paciente.endereco.cidade);
+            setValue('endereco.estado', paciente.endereco.estado);
+            setValue('endereco.logradouro', paciente.endereco.logradouro);
+            setValue('endereco.numero', paciente.endereco.numero);
+            setValue('endereco.complemento', paciente.endereco.complemento);
+            setValue('endereco.bairro', paciente.endereco.bairro);
+            setValue('endereco.pontoReferencia', paciente.endereco.pontoReferencia);
+        }
+    };
+
+    const handleDeletarClick = async () => {
+        if (paciente) {
+            try {
+                await PacienteService.DeletePaciente(paciente.id!);
+                toast.success('Paciente deletado com sucesso!');
+                navigate('/');
+            } catch (error) {
+                console.error('Erro ao deletar o paciente: ', error);
+                toast.error('Erro ao deletar o paciente!');
+            }
+        }
+    };
+
     const onSubmit: SubmitHandler<IFormCadastroPaciente> = async (data) => {
         try {
 
@@ -119,9 +173,15 @@ const CadastroPacienteFormComponent = ({ paciente }: { paciente: IPaciente}) => 
                 endereco: endereco,
             };
 
-            await PacienteService.CreatePaciente(pacienteData);
-            
-            toast.success('Paciente cadastrado com sucesso!');
+            if(isEditMode) {
+                await PacienteService.UpdatePaciente(paciente.id!, pacienteData);
+                toast.success('Paciente atualizado com sucesso!');
+                setIsEditMode(false);
+            } else {
+                await PacienteService.CreatePaciente(pacienteData);
+                toast.success('Paciente cadastrado com sucesso!');
+            }
+
         } catch (error) {
             console.error('Erro ao cadastrar o paciente: ', error);
             toast.error('Erro ao cadastrar o paciente!');
@@ -133,9 +193,13 @@ const CadastroPacienteFormComponent = ({ paciente }: { paciente: IPaciente}) => 
             <Styled.FormHeader>
                 <h1>Identificação</h1>
                 <Styled.ButtonBox>
-                    <Styled.Button $active={isEditMode} type="button" disabled={!isEditMode} >Editar</Styled.Button>
-                    <Styled.Button $active={isEditMode} $outlined type="button" disabled={!isEditMode} >Deletar</Styled.Button>
-                    <Styled.Button $active type="submit">Salvar</Styled.Button>
+                    {!isEditMode && <Styled.Button $active={!isEditMode && !isCadastroMode} type="button" disabled={isCadastroMode} onClick={handleEditarClick}>Editar</Styled.Button>}
+                    {!isEditMode && <Styled.Button $active={!isEditMode && !isCadastroMode} disabled={isCadastroMode} $outlined type="button" onClick={handleDeletarClick}>Deletar</Styled.Button>}
+                    {isEditMode && <Styled.Button $active type="button" onClick={handleCancelarClick}>Cancelar</Styled.Button>}
+                    {isEditMode && <Styled.Button $active={isEditMode} $outlined type="button" onClick={handleDeletarClick}>Deletar</Styled.Button>}
+                    {isEditMode && <Styled.Button $active type="submit">Salvar</Styled.Button>}
+                    {!isEditMode && <Styled.Button $active type="submit">Salvar</Styled.Button>}
+                    
                 </Styled.ButtonBox>
             </Styled.FormHeader>
 
