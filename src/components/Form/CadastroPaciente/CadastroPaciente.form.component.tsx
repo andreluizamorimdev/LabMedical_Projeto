@@ -52,13 +52,6 @@ const CadastroPacienteFormComponent = () => {
     const onSubmit: SubmitHandler<IFormCadastroPaciente> = async (data) => {
         try {
 
-            const paciente = await PacienteService.GetPacienteByCpf(data.cpf);
-            if(paciente) {
-                toast.error('CPF já cadastrado no sistema');
-                reset();
-                return;
-            }
-
             const endereco = {
                 cep: cepValue,
                 cidade: getValues('endereco.cidade'),
