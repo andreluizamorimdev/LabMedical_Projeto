@@ -1,0 +1,204 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "administrador@labmedical.com",
+      "password": "12345678"
+    },
+    {
+      "id": 2,
+      "email": "usuario@labmedical.com",
+      "password": "222333444"
+    },
+    {
+      "id": 3,
+      "email": "labmedical@gmail.com",
+      "password": "12456abc"
+    },
+    {
+      "id": 4,
+      "email": "andre@labmedical.com",
+      "password": "12345678"
+    },
+    {
+      "email": "andre@teste.com",
+      "password": "12345678",
+      "id": 5
+    },
+    {
+      "email": "AndreTeste@email.com",
+      "password": "12345678",
+      "id": 6
+    }
+  ],
+  "pacientes": [
+    {
+      "id": 1,
+      "nomeCompleto": "Manoel da Silva",
+      "genero": "Masculino",
+      "dataNascimento": "1990-01-01",
+      "cpf": "123.456.789-10",
+      "rg": "12.345.678-9",
+      "estadoCivil": "Solteiro(a)",
+      "telefone": "(11) 99999-9999",
+      "contatoEmergencia": "(11) 99999-9999",
+      "email": "manoel@email.com",
+      "naturalidade": "São Paulo",
+      "alergias": "Nenhuma",
+      "cuidadosEspecificos": "Nenhum",
+      "convenio": "Nenhum",
+      "numeroConvenio": "Nenhum",
+      "validadeConvenio": "Nenhum",
+      "endereco": {
+        "cep": "11675-250",
+        "cidade": "Caraguatatuba",
+        "estado": "SP",
+        "logradouro": "Rodovia dos Tamoios",
+        "numero": "12",
+        "complemento": "Casa",
+        "bairro": "Jaraguazinho",
+        "pontoReferencia": "Perto da padaria"
+      }
+    },
+    {
+      "id": 2,
+      "nomeCompleto": "Mauricio Tester",
+      "genero": "Masculino",
+      "dataNascimento": "1997-06-11",
+      "cpf": "112.222.134-00",
+      "rg": "11.234.222-1",
+      "estadoCivil": "Separado(a)",
+      "telefone": "(48) 99826-4221",
+      "contatoEmergencia": "(48) 99826-4221",
+      "email": "mauricioTester@gmail.com",
+      "naturalidade": "São Paulo",
+      "convenio": "Não tenho",
+      "numeroConvenio": "Não tenho",
+      "validadeConvenio": "Não tenho",
+      "endereco": {
+        "cep": "88113-110",
+        "cidade": "São José",
+        "estado": "SC",
+        "logradouro": "Rua Nossa Senhora de Lourdes",
+        "numero": "220",
+        "complemento": "Casa",
+        "bairro": "Areias",
+        "pontoReferencia": "Loja da nike"
+      }
+    },
+    {
+      "id": 3,
+      "nomeCompleto": "Fernando da Silva",
+      "genero": "Masculino",
+      "dataNascimento": "1999-12-22",
+      "cpf": "133.444.222-13",
+      "rg": "22.332.444-3",
+      "estadoCivil": "Casado(a)",
+      "telefone": "(44) 98879-7659",
+      "contatoEmergencia": "(44) 98879-7659",
+      "email": "fernando_silva@gmail.com",
+      "naturalidade": "Florianopolis",
+      "alergias": "PARACETAMOL",
+      "cuidadosEspecificos": "INTOLERANCIA A LATICINIOS",
+      "convenio": "Unimed",
+      "numeroConvenio": "0-031-0213-123456-00-7",
+      "validadeConvenio": "23/12/2026",
+      "endereco": {
+        "cep": "88113-835",
+        "cidade": "São José",
+        "estado": "SC",
+        "logradouro": "Rua Manoel Rosa",
+        "numero": "45",
+        "complemento": "Casa",
+        "bairro": "Areias",
+        "pontoReferencia": "Proximo a styroValey"
+      }
+    }
+  ],
+  "consultas": [
+    {
+      "id": 1,
+      "pacienteId": 1,
+      "motivoConsulta": "Consulta de rotina",
+      "dataConsulta": "2023-07-31",
+      "horarioConsulta": "15:30",
+      "descricaoProblema": "Paciente veio para um check-up de rotina.",
+      "medicacaoReceitada": "Paracetamol",
+      "dosagemPrecaucoes": "Tomar 1 comprimido a cada 6 horas."
+    },
+    {
+      "id": 2,
+      "pacienteId": 2,
+      "motivoConsulta": "Dor de cabeça",
+      "dataConsulta": "2023-08-01",
+      "horarioConsulta": "10:00",
+      "descricaoProblema": "Paciente apresentou dor de cabeça constante.",
+      "medicacaoReceitada": "Dipirona",
+      "dosagemPrecaucoes": "Tomar 1 comprimido a cada 8 horas."
+    },
+    {
+      "id": 3,
+      "pacienteId": 1,
+      "motivoConsulta": "Resultado de exames",
+      "dataConsulta": "2023-08-02",
+      "horarioConsulta": "14:00",
+      "descricaoProblema": "Paciente veio para receber os resultados de exames anteriores.",
+      "dosagemPrecaucoes": "Nenhum medicamento receitado."
+    },
+    {
+      "id": 4,
+      "pacienteId": 1,
+      "motivoConsulta": "Dor de Cabeça",
+      "dataConsulta": "2023-08-02",
+      "horarioConsulta": "20:44",
+      "descricaoProblema": "O paciente apresenta um grave caso de cansaço mental, o que está causando a dor de cabeça.",
+      "medicaoReceitada": "Paracetamol",
+      "dosagemPrecaucoes": "Paracetamol de 500g, de 12 em 12 horas, aumentar a dosagem para 6 em 6 horas caso precise."
+    }
+  ],
+  "exames": [
+    {
+      "id": 1,
+      "pacienteId": 1,
+      "nome": "Exame de Sangue",
+      "data": "2023-07-31",
+      "horario": "09:30",
+      "tipo": "Hemograma",
+      "laboratorio": "Laboratório ABC",
+      "urlDocumento": "https://example.com/documento1",
+      "resultados": "Os resultados do exame de sangue estão dentro dos valores normais."
+    },
+    {
+      "id": 2,
+      "pacienteId": 2,
+      "nome": "Exame de Urina",
+      "data": "2023-08-02",
+      "horario": "14:00",
+      "tipo": "Análise de Urina",
+      "laboratorio": "Laboratório XYZ",
+      "resultados": "Não foram encontradas irregularidades no exame de urina."
+    },
+    {
+      "id": 3,
+      "pacienteId": 1,
+      "nome": "Exame de Imagem",
+      "data": "2023-08-05",
+      "horario": "11:45",
+      "tipo": "Ressonância Magnética",
+      "laboratorio": "Hospital 123",
+      "urlDocumento": "https://example.com/documento2",
+      "resultados": "A ressonância magnética não apresentou sinais de anomalias."
+    },
+    {
+      "id": 4,
+      "pacienteId": 1,
+      "nomeExame": "Exame de Urina",
+      "dataExame": "2023-08-02",
+      "horarioExame": "23:09",
+      "tipoExame": "Análise de Urina",
+      "laboratorio": "Laboratório Santa Luzia",
+      "urlDocumentoExame": "",
+      "resultadosExame": "Não foram encontradas irregularidades no exame de urina."
+    }
+  ]
+}
