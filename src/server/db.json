@@ -188,6 +188,17 @@
       "laboratorio": "Hospital 123",
       "urlDocumento": "https://example.com/documento2",
       "resultados": "A ressonância magnética não apresentou sinais de anomalias."
+    },
+    {
+      "id": 4,
+      "pacienteId": 1,
+      "nomeExame": "Exame de Urina",
+      "dataExame": "2023-08-02",
+      "horarioExame": "23:09",
+      "tipoExame": "Análise de Urina",
+      "laboratorio": "Laboratório Santa Luzia",
+      "urlDocumentoExame": "",
+      "resultadosExame": "Não foram encontradas irregularidades no exame de urina."
     }
   ]
 }
