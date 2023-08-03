@@ -50,6 +50,11 @@ export const TextArea = styled.textarea<{$hasError?: boolean}>`
         background-color: #f2f2f2;
     }
 `
+export const TextAreaContainer = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+`;
 
 export const InputContainer = styled.div`
     position: relative;
