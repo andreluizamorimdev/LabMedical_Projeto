@@ -21,6 +21,7 @@ function App() {
             <Route path="/pacientes" element={<CadastroPacientePage />} />
             <Route path="/pacientes/:id" element={<CadastroPacientePage />} />
             <Route path="/prontuarios" element={<ListaProntuarioPage />} />
+            <Route path="/prontuarios/:id" element={<ListaProntuarioPage />} />
             <Route path="/consultas" element={<CadastroConsultaPage />} />
             <Route path="/consultas/:id" element={<CadastroConsultaPage />} />
             <Route path="/exames" element={<CadastroExamePage />} />
